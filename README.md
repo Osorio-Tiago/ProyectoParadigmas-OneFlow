@@ -6,7 +6,7 @@ En esto proyecto para el curso Paradigmas de Programación en la Universidad Nac
 Aquí están algunas de las principales herramientas y tecnologías que se utilizan en este proyecto:
 
 - [React](https://reactjs.org/): Una biblioteca de JavaScript para construir interfaces de usuario interactivas.
-- [Express](https://expressjs.com/es/): Un sistema de gestión de bases de datos utilizado para almacenar datos.
+- [Express](https://expressjs.com/): Un framework de aplicaciones web para Node.js utilizado para crear servicios web y API.
 
 ## Autores del Proyecto
 
