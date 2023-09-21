@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState} from 'react';
+import '../App.css';
 
 
-
-function App() {
+function Button() {
   const [data, setData] = useState(""); // Estado para almacenar datos
 
   const handleLoadData = () => {
     // Lógica para cargar datos (puedes reemplazar esto con tu lógica real)
-    const loadedData = "Cargar";
+    const loadedData = "";
     setData(loadedData);
   };
 
@@ -18,14 +18,23 @@ function App() {
     console.log("Datos guardados:", dataToSave);
   };
 
+
+const handleCompiler = () =>{
+  const compiler= "";
+ //Logica para la ejecucion 
+  window.location.href = '/';
+};
+
   return (
-    <div>
-      <h1>Botones de Cargar y Guardar</h1>
+    <div class ='Buttons'>
+     
       <button onClick={handleLoadData}>Cargar Datos</button>
       <button onClick={handleSaveData}>Guardar Datos</button>
+      <button onClick={handleCompiler}>Compilar</button>
       <div>{data && <p>Datos cargados: {data}</p>}</div>
+
     </div>
   );
 }
 
-export default App;
+export default Button;
