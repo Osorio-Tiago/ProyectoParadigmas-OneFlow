@@ -1,6 +1,7 @@
 import React, {useEffect, useState } from 'react'
 import './App.css';
 import Button from './componentes/boton';
+import CodeEditor from './componentes/CodeEditor';
 
 
 function App() {
@@ -29,6 +30,7 @@ return (
       ))
     )}
     <Button/>
+    <CodeEditor></CodeEditor>
   </div>
 );
 
