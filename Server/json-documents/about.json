@@ -1,0 +1,45 @@
+{
+    "estudiantes": [
+      {
+        "nombre": "Santiago Osorio",
+        "equipo": "Grupo 04-3pm",
+        "curso": "Paradigmas de Programación",
+        "proyecto": "Transpilador OneFlowStream",
+        "semestre": "Segundo ciclo",
+        "anio": 2023,
+        "escuela": "Escuela de Informática",
+        "universidad": "Universidad Nacional de Costa Rica"
+      },
+      {
+        "nombre": "Paula Arias",
+        "equipo": "Grupo 04-3pm",
+        "curso": "Paradigmas de Programación",
+        "proyecto": "Transpilador OneFlowStream",
+        "semestre": "Segundo ciclo",
+        "anio": 2023,
+        "escuela": "Escuela de Informática",
+        "universidad": "Universidad Nacional de Costa Rica"
+      },
+      {
+        "nombre": "José Sequeira",
+        "equipo": "Grupo 04-3pm",
+        "curso": "Paradigmas de Programación",
+        "proyecto": "Transpilador OneFlowStream",
+        "semestre": "Segundo ciclo",
+        "anio": 2023,
+        "escuela": "Escuela de Informática",
+        "universidad": "Universidad Nacional de Costa Rica"
+      },
+      {
+        "nombre": "Dylan Molina",
+        "equipo": "Grupo 04-3pm",
+        "curso": "Paradigmas de Programación",
+        "proyecto": "Transpilador OneFlowStream",
+        "semestre": "Segundo ciclo",
+        "anio": 2023,
+        "escuela": "Escuela de Informática",
+        "universidad": "Universidad Nacional de Costa Rica"
+      }
+    ]
+  }
+  
