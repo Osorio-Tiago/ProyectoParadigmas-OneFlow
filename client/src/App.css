@@ -1,0 +1,49 @@
+.custom-textarea {
+  
+    width: 300px;    /* Specify your desired width */
+    height: 200px;   /* Specify your desired height */
+    overflow-y: auto; /* Enable vertical scrolling if content overflows */
+  }
+  .bg-black {
+      background-color: black;
+  }
+  .text-white {
+      color:white;
+  }
+  
+  .custom-container{
+    margin-left: 20%; 
+    margin-top: 10%;  
+  
+  }
+  
+  .custom-buttons{
+    margin-left: 20%; 
+    margin-top: 1%;  
+  
+  }
+
+ 
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Esto centra verticalmente */
+  }
+
+  .button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    margin: 10px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+  }
+
+  .buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh; /* Esto centra verticalmente */
+  }
