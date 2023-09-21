@@ -2,10 +2,9 @@ import React, {useEffect, useState } from 'react'
 import './App.css';
 import Button from './componentes/boton';
 import CodeEditor from './componentes/CodeEditor';
-
+import CompilerTextArea from './componentes/CompilerTextArea';
 
 function App() {
-
 
   // Example using fetch from data in server
   const [backendData, setBackendData] = useState([{}])
@@ -29,8 +28,12 @@ return (
         <p key={i}>{user}</p>
       ))
     )}
-    <Button/>
-    <CodeEditor></CodeEditor>
+    <div className='StyleC'>
+      <Button/>
+      <CodeEditor></CodeEditor>
+      <CompilerTextArea></CompilerTextArea>
+    </div>
+    
   </div>
 );
 
