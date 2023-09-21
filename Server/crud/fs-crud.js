@@ -9,7 +9,10 @@ const readAboutUs = () => {
 
 function save(req){
     const { id, texto } = req.body;
-  
+
+    if(typeof id === 'undefined' || typeof texto === 'undefined'){
+        throw err
+    }
     // Read data.json
     let data = [];
     try {
@@ -18,6 +21,7 @@ function save(req){
 
     // Add new Object to data array
     data.push({ id, texto });
+
     // write data array to my data.json
     fs.writeFileSync('data.json', JSON.stringify(data, null, 2), 'utf8');
     } catch (err) {
