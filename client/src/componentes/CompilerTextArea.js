@@ -6,14 +6,7 @@ function CompilerTextArea() {
   const [code, setCode] = useState('');
   const [result, setResult] = useState('');
 
-  const compileCode = () => {
-    try {
-      const compiledResult = eval(code);
-      setResult(compiledResult.toString());
-    } catch (error) {
-      setResult(`Error: ${error.message}`);
-    }
-  };
+  
 
   return (
     <div>
@@ -25,11 +18,12 @@ function CompilerTextArea() {
         cols="50"
         placeholder="Escribe tu código aquí..."
       ></textarea>
-      <button onClick={compileCode}>Compilar</button>
       <h2>Resultado:</h2>
       <pre>{result}</pre>
     </div>
   );
-}
+
+  
+  }
 
 export default CompilerTextArea;
