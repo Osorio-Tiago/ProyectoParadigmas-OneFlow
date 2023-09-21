@@ -31,15 +31,16 @@ function read(req){
     try {
       const jsonData = fs.readFileSync('data.json', 'utf8');
       const data = JSON.parse(jsonData);
+      console.log(data)
   
       // search object from my data by id
       const script = data.find(item => item.id === id);
-
+      return script
     } catch (err) {
       throw err
     }
 
-    return script
+  
 }
 
 module.exports = { readAboutUs, save, read }

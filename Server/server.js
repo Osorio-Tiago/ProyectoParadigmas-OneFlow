@@ -45,13 +45,15 @@ app.post('/script/save', (req, res) => {
 
 app.get('/script/:id', (req, res) => {
     try {
-        var script = crud.load(req)
+        var script = crud.read(req)
+        console.log(script)
         if (script) {
             res.status(200).json(script);
           } else {
             res.status(404).json({ message: 'No se encontró el script con el ID especificado' });
           }
     } catch (err) {
+
         res.status(500).json({ message: 'Error al leer el archivo JSON' });
     }
 })
