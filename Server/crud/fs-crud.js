@@ -15,14 +15,14 @@ function save(req){
     try {
       const jsonData = fs.readFileSync('./data.json', 'utf8');
       data = JSON.parse(jsonData);
+
+    // Add new Object to data array
+    data.push({ id, texto });
+    // write data array to my data.json
+    fs.writeFileSync('data.json', JSON.stringify(data, null, 2), 'utf8');
     } catch (err) {
       throw err
     }
-    // Add new Object to data array
-    data.push({ id, texto });
-
-    // write data array to my data.json
-    fs.writeFileSync('data.json', JSON.stringify(data, null, 2), 'utf8');
 }
 
 function read(req){
@@ -31,11 +31,11 @@ function read(req){
     try {
       const jsonData = fs.readFileSync('data.json', 'utf8');
       const data = JSON.parse(jsonData);
-      console.log(data)
-  
       // search object from my data by id
       const script = data.find(item => item.id === id);
+
       return script
+
     } catch (err) {
       throw err
     }
