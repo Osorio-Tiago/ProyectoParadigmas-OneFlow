@@ -28,10 +28,11 @@ return (
         <p key={i}>{user}</p>
       ))
     )}
+ 
     <div className='StyleC'>
-      <Button/>
-      <CodeEditor></CodeEditor>
-      <CompilerTextArea></CompilerTextArea>
+    <Button/>
+      <CodeEditor/>
+      <CompilerTextArea/>
     </div>
     
   </div>
