@@ -28,32 +28,37 @@ app.post('/compile', (req, res) =>{
 
 //  POST METHOD WE DON'T KNOW WHAT THIS HAVE TO DO 
 app.post('/eval', (req, res) =>{
-    // Don't know what to do here... yet
+    crud.responseEval().then((script) =>{
+        script ? 
+            res.status(200).json(script) : 
+            res.status(404).json({ message: 'No se pudo evaluar la expresion' })
+      })
+      .catch((err) => {
+        res.status(500).json({ message: 'Error interno del servidor' });
+    })
 })
-
-
 // LOAD AND SAVE SCRIPTS
 
-app.post('/script/save', (req, res) => {
-    try{
-        crud.save(req)
-    }catch(err){
-        res.status(500).json({ message: 'No se pudieron almacenar los datos' });
-    }
-    res.status(200).json({ message: 'Datos guardados correctamente' });
+
+  app.post('/script/save', (req, res) => {
+    crud.save(req)
+      .then(() => {
+        res.status(200).json({ message: 'Datos guardados correctamente' });
+      })
+      .catch((err) => {
+        res.status(500).json({ message: 'No se pudieron almacenar los datos', error: err.message });
+      });
   });
 
-app.get('/script/:id', (req, res) => {
-    try {
-        var script = crud.read(req)
-        console.log(script)
-        if (script) {
-            res.status(200).json(script);
-          } else {
-            res.status(404).json({ message: 'No se encontró el script con el ID especificado' });
-          }
-    } catch (err) {
 
+  app.get('/script/:id', (req, res) => {
+    crud.read(req)
+      .then((script) => {
+        script ? 
+            res.status(200).json(script) : 
+            res.status(404).json({ message: 'No se encontró el script con el ID especificado' })
+      })
+      .catch((err) => {
         res.status(500).json({ message: 'Error al leer el archivo JSON' });
-    }
-})
+      });
+  });

@@ -1,4 +1,4 @@
-const fs = require('fs');
+const fs = require('fs').promises;
 
 const readAboutUs = () => { 
     const aboutUs = fs.readFileSync('./json-documents/about.json')
@@ -7,40 +7,65 @@ const readAboutUs = () => {
     return aboutUsJson
 }
 
+const responseEval = () => {
+  return new Promise((resolve, reject) => {
+    fs.readFile('./evalResponse/ra_fake.txt', 'utf-8')
+      .then((data) => {
+        resolve(data);
+      })
+      .catch((error) => {
+        reject(error);
+      });
+  });
+};
+
 const save = (req) => {
+  return new Promise((resolve, reject) => {
     const { id, texto } = req.body;
-  
+
     if (typeof id === 'undefined' || typeof texto === 'undefined') {
-      throw err;
+      reject(new Error("ID y texto son campos requeridos."));
+      return;
     }
-  
-    let data = [];
-    try {    // Read data.json
-      const jsonData = fs.readFileSync('./data.json', 'utf8');
-      data = JSON.parse(jsonData);
-  
-      data.push({ id, texto });
-  
-      fs.writeFileSync('data.json', JSON.stringify(data, null, 2), 'utf8');     // write data array to my data.json
-    } catch (err) {
-      throw err;
-    }
-  };
 
 
-  const read = (req) => {
-    const { id } = req.params;
-      
-    try { // Read data.json
-      const jsonData = fs.readFileSync('data.json', 'utf8');
+    fs.readFile('./data.json', 'utf8')
+      .then((data) => {
+        const jsonData = JSON.parse(data);
+
+        const existData = jsonData.find((item) => item.id === id);
+        
+        existData ?
+          existData.texto = texto : 
+          jsonData.push({ id, texto });
+        
+
+        return fs.writeFile('./data.json', JSON.stringify(jsonData, null, 2), 'utf8');
+      })
+      .then(() => {
+        resolve(); // Promise finished successfull
+      })
+      .catch((err) => {
+        reject(err);
+      });
+  });
+};
+
+const read = (req) => {
+  const { id } = req.params;
+
+  return fs.readFile('data.json', 'utf8')
+    .then((jsonData) => {
       const data = JSON.parse(jsonData);
-  
-      const script = data.find((item) => item.id === id);     // search object from my data by id
-  
-      return script;
-    } catch (err) {
-      throw err;
-    }
-  };
 
-module.exports = { readAboutUs, save, read }
+      const script = data.find((item) => item.id === id);  // search object from my data by id
+      return script;
+    })
+    .catch((err) => {
+      throw err;
+    });
+};
+
+
+
+module.exports = { readAboutUs, save, read, responseEval }
