@@ -7,11 +7,34 @@ const readAboutUs = () => {
     return aboutUsJson
 }
 
+/*
+const readKeywords = () => { 
+  const keywords = fs.readFileSync('./json-documents/keywords.json')
+  const keywordsJson = JSON.parse(keywords)
+  return keywordsJson
+}
+*/
+
+
+const readKeywords = () => {
+  return new Promise((resolve, reject) => {
+    fs.readFile('./json-documents/keywords.json', 'utf8')
+      .then((Keywordsdata) => {
+        const keywordsJson = JSON.parse(Keywordsdata);
+        resolve(keywordsJson);
+      })
+      .catch((error) => {
+        reject(error);
+      });
+  });
+};
+
+
 const responseEval = () => {
   return new Promise((resolve, reject) => {
     fs.readFile('./evalResponse/ra_fake.txt', 'utf-8')
-      .then((data) => {
-        resolve(data);
+      .then((Fakedata) => {
+        resolve(Fakedata); // Promise finished successfull return data in ra_fake.txt
       })
       .catch((error) => {
         reject(error);
@@ -68,4 +91,4 @@ const read = (req) => {
 
 
 
-module.exports = { readAboutUs, save, read, responseEval }
+module.exports = { readAboutUs, save, read, responseEval, readKeywords }

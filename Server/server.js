@@ -14,6 +14,16 @@ app.get("/api", (req, res) => {
 })
 
 
+app.get("/keywords", (req, res) => {
+  crud.readKeywords()
+    .then((keywordsJson) => {
+      res.json(keywordsJson);
+    })
+    .catch((error) => {
+      res.status(500).json({ error: 'Error al leer las palabras clave' });
+    });
+});
+
 // GET METHOD RETURN ABOUT US INFO
 app.get('/', (req, res) => {
     res.json(crud.readAboutUs())
@@ -49,7 +59,6 @@ app.post('/eval', (req, res) =>{
         res.status(500).json({ message: 'No se pudieron almacenar los datos', error: err.message });
       });
   });
-
 
   app.get('/script/:id', (req, res) => {
     crud.read(req)
