@@ -7,7 +7,7 @@ function Button() {
 
   const handleLoadData = () => {
     
-    axios.get('/script/3') // ruta correcta para cargar los datos
+    axios.get('/script/4') // ruta correcta para cargar los datos
       .then(response => {
         
         const loadedData = response.data; // Suponiendo que la respuesta contiene los datos que deseas cargar
@@ -21,7 +21,7 @@ function Button() {
 
   const handleSaveData = () => {
     // Datos que deseas enviar al servidor
-    const dataToSave = { id: 5, texto: "Tercer objeto con ID 5." };
+    const dataToSave = { id: "4", texto: "Tercer objeto con ID 4." };
 
     // Realizar una solicitud POST al servidor
     axios.post('/script/save', dataToSave)
@@ -45,7 +45,7 @@ function Button() {
       <button onClick={handleLoadData}>Cargar Datos</button>
       <button onClick={handleSaveData}>Guardar Datos</button>
       <button onClick={handleCompiler}>Compilar</button>
-      <div>{data && <p>Datos cargados: {data}</p>}</div>
+      <div>{data && <p>Datos cargados: {data.texto}</p>}</div>
       {/* Asegúrate de mostrar la propiedad correcta del objeto data */}
     </div>
   );
