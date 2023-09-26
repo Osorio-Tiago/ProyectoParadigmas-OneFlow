@@ -4,9 +4,10 @@ function CodeEditor() {
   const [code, setCode] = useState('');
   const [output, setOutput] = useState(''); // Estado para almacenar la salida del código
 
-  const handleChange = (e) => {
-    setCode(e.target.value);
+  const handleChange = ({ target: { value } }) => {
+    setCode(value);
   };
+  
 
   const runCode = () => {
     try {
@@ -16,6 +17,11 @@ function CodeEditor() {
     } catch (error) {
       setOutput(`Error: ${error.message}`);
     }
+  };
+
+  const clearCode = () => {
+    setCode('');
+    setOutput('');
   };
 
   return (
@@ -49,6 +55,7 @@ function CodeEditor() {
           }}
         />
         <button onClick={runCode}>Ejecutar</button>
+        <button onClick={clearCode}>Limpiar</button> {/* Botón para limpiar */}
       </div>
       <div style={{ flex: '1', padding: '10px' }}>
         <div>
