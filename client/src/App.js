@@ -4,6 +4,7 @@ import Button from './componentes/boton';
 import CodeEditor from './componentes/CodeEditor';
 import CompilerTextArea from './componentes/CompilerTextArea';
 
+
 function App() {
 
   // Example using fetch from data in server
@@ -29,11 +30,12 @@ return (
       ))
     )}
  
+  <div className='botones'> <Button/></div>
+
     <div className='StyleC'>
-    <Button/>
-      <CodeEditor/>
-      <CompilerTextArea/>
+    <CodeEditor/>
     </div>
+
     
   </div>
 );

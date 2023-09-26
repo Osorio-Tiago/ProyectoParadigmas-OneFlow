@@ -1,70 +1,88 @@
 .custom-textarea {
   
-    width: 300px;    /* Specify your desired width */
-    height: 200px;   /* Specify your desired height */
-    overflow-y: auto; /* Enable vertical scrolling if content overflows */
-  }
-  .bg-black {
-      background-color: black;
-  }
-  .text-white {
-      color:white;
-  }
-  
-  .custom-container{
-    margin-left: 20%; 
-    margin-top: 10%;
-    
-  }
-  
-  .custom-buttons{
-    margin-left: 20%; 
-    margin-top: 1%;  
-  
-  }
+  width: 300px;    /* Specify your desired width */
+  height: 200px;   /* Specify your desired height */
+  overflow-y: auto; /* Enable vertical scrolling if content overflows */
+}
+.bg-black {
+    background-color: black;
+}
+.text-white {
+    color:white;
+}
 
-  .Buttons {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 10px; /* Espacio entre los botones y la caja de texto */
-  }
+.custom-container{
+  margin-left: 20%; 
+  margin-top: 10%;
   
-  .StyleC {
-    display: grid;
-    grid-template-columns: 1fr; /* Una sola columna */
-    grid-template-rows: auto auto; /* Dos filas, una para la caja de texto y otra para los botones */
-    gap: 10px; /* Espacio entre las filas y las columnas */
-    background-color: #3eabcc;
-    color: #ffffff;
-    padding: 20px;
-    margin: 30px auto; /* Centra horizontalmente */
-    cursor: pointer;
-    border: none;
-    border-radius: 15px;
-    max-width: 400px; /* Limita el ancho del contenedor */
-  }
-  
-  .input-box {
-    width: 100%;
-    padding: 10px;
-    border: 2px solid #3eabcc;
-    border-radius: 5px;
-  }
-  
-  button {
-    background-color: #3eabcc;
-    color: #ffffff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #357ca5; /* Cambia el color al pasar el mouse */
-  }
-  
+}
+
+.custom-buttons{
+  margin-left: 20%; 
+  margin-top: 1%;  
+
+}
+
+.Buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px; /* Espacio entre los botones y la caja de texto */
+}
+
+.StyleC {
+  display: flex;
+  flex-direction: column; /* Alinea el contenido verticalmente */
+  align-items: center; /* Centra el contenido horizontalmente */
+  background-color: #0b637e;
+  color: #ffffff;
+  padding: 30px; /* Aumenta el espacio de relleno para acercar el contenido al borde */
+  cursor: pointer;
+  border: none;
+  border-radius: 15px;
+  max-width: 80%; /* Limita el ancho del contenedor al 80% del ancho del padre */
+  margin: 0 auto; /* Centra horizontalmente */
+}
 
 
+
+.input-box {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid #3eabcc;
+  border-radius: 5px;
+}
+
+button {
+  background-color: #0b637e;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #357ca5; /* Cambia el color al pasar el mouse */
+}
+
+
+.botones{
+  display: flex;
+  justify-content: space-between;
+  background-color: #0b637e;
+  color: #ffffff;
+  margin: 20px auto; /* Centra horizontalmente */
+  cursor: pointer;
+  border: none;
+  border-radius: 10px;
+  max-width: 400px; /* Limita el ancho del contenedor */
+  align-items: center;
+
   
- 
+}
+
+.Button{
+  display: flex;
+  justify-content: space-between;
+  
+}

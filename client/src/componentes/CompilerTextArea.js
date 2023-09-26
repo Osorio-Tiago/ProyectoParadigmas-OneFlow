@@ -10,7 +10,6 @@ function CompilerTextArea() {
 
   return (
     <div>
-      <h2>Editor de Código</h2>
       <textarea
         value={code}
         onChange={(e) => setCode(e.target.value)}
