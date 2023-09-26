@@ -29,11 +29,12 @@ return (
       ))
     )}
  
+  <div className='botones'> <Button/></div>
+
     <div className='StyleC'>
-    <Button/>
-      <CodeEditor/>
-      <CompilerTextArea/>
+    <CodeEditor/>
     </div>
+
     
   </div>
 );
