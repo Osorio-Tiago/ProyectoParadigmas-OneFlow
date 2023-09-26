@@ -1,30 +1,47 @@
 import React, { useState } from 'react';
 
-const keywords = [
-  "HTML",
-  "javascript",
-  "Node.js",
-  "php",
-  "java"
-];
+let keywords = []
+
+fetch("/keywords")
+  .then((response) => {
+    if (!response.ok) {
+      throw new Error("Error al obtener las palabras clave");
+    }
+    return response.json();
+  })
+  .then((data) => {
+    keywords = data.palabrasReservadas; //Set keywords array with info returned by fetch from api
+  })
+  .catch((error) => {
+    console.error(error);
+  });
 
 function CodeEditor() {
+
   const [code, setCode] = useState('');
   const [output, setOutput] = useState('');
   const [matching_keywords, setMatching_keywords] = useState([]);
 
-  function autoComplete(word) {
-    const newCode = eliminarUltimaPalabra(code) + " " + word;
-    setCode(newCode);
-    setMatching_keywords([]);
+
+  const autoComplete = (word) => {
+    const filteredWords = matching_keywords.filter(keyword => keyword.includes(word));
+    
+    if (filteredWords.length > 0) {
+      const newCode = eliminarUltimaPalabra(code) + " " + filteredWords[0];
+      setCode(newCode);
+    }
   }
 
   const handleChange = ({ target: { value } }) => {
     setCode(value);
-    const matches = keywords.filter((word) => word.includes(obtenerUltimaPalabra(value)));
-    if (obtenerUltimaPalabra(value.trim()) === "") {
+  
+    const inputWord = obtenerUltimaPalabra(value.trim());
+  
+    if (inputWord === "") {
       setMatching_keywords([]);
     } else {
+      // Filter keywords that start with the inputWord
+      const matches = keywords.filter((word) => word.startsWith(inputWord));
       setMatching_keywords(matches);
     }
   };
