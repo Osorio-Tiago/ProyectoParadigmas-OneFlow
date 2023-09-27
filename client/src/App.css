@@ -1,8 +1,8 @@
 .custom-textarea {
   
-  width: 300px;    /* Specify your desired width */
-  height: 200px;   /* Specify your desired height */
-  overflow-y: auto; /* Enable vertical scrolling if content overflows */
+  width: 300px;    
+  height: 200px;   
+  overflow-y: auto; 
 }
 .bg-black {
     background-color: black;
@@ -26,21 +26,21 @@
 .Buttons {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 10px; /* Espacio entre los botones y la caja de texto */
+  margin-bottom: 10px; 
 }
 
 .StyleC {
   display: flex;
-  flex-direction: column; /* Alinea el contenido verticalmente */
-  align-items: center; /* Centra el contenido horizontalmente */
+  flex-direction: column; 
+  align-items: center; 
   background-color: #0b637e;
   color: #ffffff;
-  padding: 30px; /* Aumenta el espacio de relleno para acercar el contenido al borde */
+  padding: 30px; 
   cursor: pointer;
   border: none;
   border-radius: 15px;
-  max-width: 80%; /* Limita el ancho del contenedor al 80% del ancho del padre */
-  margin: 0 auto; /* Centra horizontalmente */
+  max-width: 80%; 
+  margin: 0 auto; 
 }
 
 
@@ -62,7 +62,7 @@ button {
 }
 
 button:hover {
-  background-color: #357ca5; /* Cambia el color al pasar el mouse */
+  background-color: #357ca5; 
 }
 
 
@@ -71,11 +71,11 @@ button:hover {
   justify-content: space-between;
   background-color: #0b637e;
   color: #ffffff;
-  margin: 20px auto; /* Centra horizontalmente */
+  margin: 20px auto; 
   cursor: pointer;
   border: none;
   border-radius: 10px;
-  max-width: 400px; /* Limita el ancho del contenedor */
+  max-width: 400px; 
   align-items: center;
 
   

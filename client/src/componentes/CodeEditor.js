@@ -85,23 +85,7 @@ function CodeEditor() {
     setWordCount(0); // Restablece el contador de palabras
   };
 
-  const handleSearchChange = ({ target: { value } }) => {
-    setSearchTerm(value);
-  };
 
-  const loadData = () => {
-    // Lógica para cargar datos
-    // Puedes agregar la lógica para cargar datos aquí
-    // Por ejemplo, hacer una solicitud fetch a una API o cargar datos de un archivo.
-    console.log(`Cargando datos para el término de búsqueda: ${searchTerm}`);
-  };
-
-  const saveData = () => {
-    // Lógica para guardar datos
-    // Puedes agregar la lógica para guardar datos aquí
-    // Por ejemplo, enviar datos a un servidor o guardar en el navegador.
-    console.log(`Guardando datos para el término de búsqueda: ${searchTerm}`);
-  };
 
   return (
     <>
@@ -109,8 +93,6 @@ function CodeEditor() {
         <input
           type="text"
           placeholder="Buscar o cargar archivo"
-          value={searchTerm}
-          onChange={handleSearchChange}
           style={{ width: '350px', display: 'block', margin: '0 auto' }}
         />
       </div>
@@ -193,11 +175,6 @@ function CodeEditor() {
             marginTop: '20px',
           }}
         />
-      </div>
-      <div>
-        <button onClick={isDataLoaded ? saveData : loadData} style={{ display: 'block', margin: '0 auto' }}>
-          {isDataLoaded ? 'Guardar Datos' : 'Cargar Datos'}
-        </button>
       </div>
     </>
   );
