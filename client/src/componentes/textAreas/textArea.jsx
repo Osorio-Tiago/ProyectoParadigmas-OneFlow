@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-function TextAreaWithLineCounter({text, setText, boolRead, clickFunction}) {
+function TextAreaWithLineCounter({text, setText, boolRead, clickFunction, keyDown}) {
 
   const [lines, setLines] = useState([]);
 
@@ -50,6 +50,7 @@ function TextAreaWithLineCounter({text, setText, boolRead, clickFunction}) {
         value={text}
         onChange={setText}
         onClick={clickFunction}
+        onKeyDown={keyDown}
         rows={10}
         cols={40}
         spellCheck="false"

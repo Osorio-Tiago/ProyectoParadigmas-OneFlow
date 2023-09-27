@@ -1,9 +1,9 @@
 import React, {useEffect, useState } from 'react'
 import './App.css';
-import Button from './componentes/boton';
+import Button from './componentes/buttons/boton';
 import CodeEditor from './componentes/CodeEditor';
-import BtonAboutUs from './componentes/btonAboutUs';
-import TextAreaWithLineCounter from  './componentes/textAreaPrueba';
+import BtonAboutUs from './componentes/buttons/btonAboutUs';
+import TextAreaWithLineCounter from  './componentes/textAreas/textArea';
 
 
 function App() {
@@ -78,7 +78,7 @@ return (
                 handleChangeInput = {handleInputChange} ConsoleData = {consoleOutput}
                 lineCountOutput = {lineCountOutput} wordCountOutput = {wordCountOutput}
                 setLineCountOutput = {handleLineCountOutputChange} setWordCountOutput = {handleWordCountOutputChange}
-                lineCount={lineCount} wordCount={wordCount} setLineCount={handleLineCountChange} setWordCount={handleWordCounChange}
+                wordCount={wordCount} setLineCount={handleLineCountChange} setWordCount={handleWordCounChange}
 
       />
     </div>

@@ -1,11 +1,13 @@
 import React, {useEffect,useState } from 'react';
-import '../App.css';
+import '../../App.css';
 
 
 function Button({id, codeData ,setCodeData, outputData, setOutputData, setEval, setIdData, setLinesCount, setWordCount, setLinesCountOutput, setWordCountOutput}) {
   const [data, setData] = useState(''); // State to store data
   const [errorMsg, setErrorMsg] = useState('')//State to store error messages
   const [hideState, setHidden] = useState(true)//Controls whether to hide or show an error message
+  const [hiddenStateSuccess, setHiddenSuccess] = useState(true)//Controls whether to hide or show an success message
+  const [hiddenStateSuccessMsg, setHiddenSuccessMsg] = useState('Se guardaron los datos con éxito!')//Controls whether to hide or show an success message
 
 
 
@@ -22,7 +24,7 @@ function Button({id, codeData ,setCodeData, outputData, setOutputData, setEval, 
     fetch(`/script/${id}`)
       .then(response => {
         if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
+          throw new Error(`HTTP error! Status: ${response}`);
         }
         return response.json(); 
       })
@@ -39,6 +41,9 @@ function Button({id, codeData ,setCodeData, outputData, setOutputData, setEval, 
 
       })
       .catch(error => {
+        setErrorMsg('No se encontró el archivo que se desea cargar')
+        setHidden(false)
+
         console.error("Error al cargar datos:", error);
       });
   };
@@ -73,6 +78,7 @@ function Button({id, codeData ,setCodeData, outputData, setOutputData, setEval, 
       })
       .then(responseData => {
         console.log("Respuesta del servidor:", responseData);
+        setHiddenSuccess(false)
       })
       .catch(error => {
      console.error("Error al enviar datos al servidor:", error);
@@ -173,6 +179,7 @@ function Button({id, codeData ,setCodeData, outputData, setOutputData, setEval, 
     setWordCountOutput({target : {value : 0}})
     setHidden(true)
     setErrorMsg('')
+    setHiddenSuccess(true)
   } 
     
 
@@ -190,6 +197,7 @@ function Button({id, codeData ,setCodeData, outputData, setOutputData, setEval, 
       <div>{data && <p>Datos cargados: {data}</p>}</div>
     </div>
  <p hidden = {hideState} id="LoadDataerror" style={{ color: 'red'}}>{errorMsg}</p>
+ <p hidden = {hiddenStateSuccess} style={{color : '#7FFF00'}}>{hiddenStateSuccessMsg}</p>
     </div>
   );
 }

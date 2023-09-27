@@ -13,7 +13,7 @@
   },
   {
     "id": "4",
-    "texto": "Cuarto objeto con ID 4."
+    "texto": "Este es el 1"
   },
   {
     "id": "5",
@@ -30,5 +30,9 @@
   {
     "id": "CodigoPrueba",
     "texto": "return (\n  <div style={{ display: 'flex' ,overflowY: 'scroll' }}>\n    <div style={lineCounterStyle}>\n      {lines.map((line, index) => (\n        <div key={index}\n          style={{\n          textAlign: 'right',\n          paddingRight: '5px',\n          color: '#fff',\n        }}>\n          {index + 1}\n        </div>\n      ))}\n    </div>\n    <div style={{ flex: '1', display: 'flex', flexDirection: 'column' }}>\n      <textarea \n        fontSize=\"1rem\"\n        value={text}\n        onChange={setText}\n        rows={10}\n        cols={40}\n        \n        style={{\n          width: '100%',\n          height: '100%',\n          border: 'none',\n          outline: 'none',\n          boxSizing: 'border-box',\n          whiteSpace: 'nowrap',\n          overflowX: 'auto',\n          overflowY: 'visible',\n          resize: 'none'\n        }}\n      />\n    </div>\n  </div>\n);  "
+  },
+  {
+    "id": "pruebaMensaje",
+    "texto": "Este es mi codigo import"
   }
 ]

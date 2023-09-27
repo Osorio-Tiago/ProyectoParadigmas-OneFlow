@@ -9,9 +9,6 @@ const server = app.listen(port, () => console.log('Server working on port ' + po
 app.use(bodyParser.json());
 
 
-app.get("/api", (req, res) => {
-    res.json({ "users" : ["Santiago", "Dylan", "Jose", "Paula" ]})
-})
 
 
 app.get("/keywords", (req, res) => {

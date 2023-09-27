@@ -50,7 +50,7 @@ const save = (req) => {
     }
 
 
-    fs.readFile('./data.json', 'utf8')
+    fs.readFile('./json-documents/data.json', 'utf8')
       .then((data) => {
         const jsonData = JSON.parse(data);
 
@@ -61,7 +61,7 @@ const save = (req) => {
           jsonData.push({ id, texto });
         
 
-        return fs.writeFile('./data.json', JSON.stringify(jsonData, null, 2), 'utf8');
+        return fs.writeFile('./json-documents/data.json', JSON.stringify(jsonData, null, 2), 'utf8');
       })
       .then(() => {
         resolve(); // Promise finished successfull
@@ -75,7 +75,7 @@ const save = (req) => {
 const read = (req) => {
   const { id } = req.params;
 
-  return fs.readFile('data.json', 'utf8')
+  return fs.readFile('./json-documents/data.json', 'utf8')
     .then((jsonData) => {
       const data = JSON.parse(jsonData);
 
