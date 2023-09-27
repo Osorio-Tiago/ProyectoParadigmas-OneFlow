@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import TextAreaWithLineCounter from  './textAreas/textArea';
+import { API_SERVER_URL } from './Url';
+
+
 let keywords = []; // Stores relevant keywords from the code
 
 // Functional component, which accept a series of properties as unsctructured arguments
@@ -9,7 +12,7 @@ const CodeEditor = ({codeData, setCode, outputData, setConsoleOutput, inputData,
   //The keyword array is updated with the keywords obtained from the server
   //executed only once after assembling the component
   useEffect(() => {
-    fetch("/keywords")
+    fetch(`${API_SERVER_URL}/keywords`)
       .then((response) => {
         if (!response.ok) {
           throw new Error("Error al obtener las palabras clave");

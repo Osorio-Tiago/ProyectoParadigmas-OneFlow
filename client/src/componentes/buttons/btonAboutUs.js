@@ -7,7 +7,7 @@ function BtonAboutUs() {
   //This function is use to GET json data to the server for take 
   //data from 'about'
   const fetchJsonData = () => {
-    fetch('/about')
+    fetch('http://localhost:3001/about')
       .then((response) => {
         if (!response.ok) {
           throw new Error('Error al obtener los datos');

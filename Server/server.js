@@ -3,12 +3,12 @@ const crud = require('./crud/fs-crud.js')
 const bodyParser = require('body-parser');
 const app = express()
 const port = 3001
-
+const cors = require('cors')
 const server = app.listen(port, () => console.log('Server working on port ' + port))
 
 app.use(bodyParser.json());
 
-
+app.use(cors())
 
 
 app.get("/keywords", (req, res) => {

@@ -3,8 +3,6 @@ import './App.css';
 import Button from './componentes/buttons/boton';
 import CodeEditor from './componentes/CodeEditor';
 import BtonAboutUs from './componentes/buttons/btonAboutUs';
-import TextAreaWithLineCounter from  './componentes/textAreas/textArea';
-
 
 function App() {
 

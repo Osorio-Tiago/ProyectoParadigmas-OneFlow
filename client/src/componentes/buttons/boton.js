@@ -1,6 +1,6 @@
 import React, {useEffect,useState } from 'react';
 import '../../App.css';
-
+import { API_SERVER_URL } from '../Url';
 
 function Button({id, codeData ,setCodeData, outputData, setOutputData, setEval, setIdData, setLinesCount, setWordCount, setLinesCountOutput, setWordCountOutput}) {
   const [data, setData] = useState(''); // State to store data
@@ -21,7 +21,7 @@ function Button({id, codeData ,setCodeData, outputData, setOutputData, setEval, 
     }else{
       setHidden(true)
       setErrorMsg('')
-    fetch(`/script/${id}`)
+    fetch(`${API_SERVER_URL}/script/${id}`)
       .then(response => {
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response}`);
@@ -60,7 +60,7 @@ function Button({id, codeData ,setCodeData, outputData, setOutputData, setEval, 
       setHidden(true)
       setErrorMsg('')
     
-    fetch(`/script/save`, {
+    fetch(`${API_SERVER_URL}/script/save`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -101,7 +101,7 @@ function Button({id, codeData ,setCodeData, outputData, setOutputData, setEval, 
       setHidden(true)
       setErrorMsg('')
 
-      fetch('/compile', {
+      fetch(`${API_SERVER_URL}/compile`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -142,7 +142,7 @@ function Button({id, codeData ,setCodeData, outputData, setOutputData, setEval, 
       setHidden(true)
       setErrorMsg('')
 
-    fetch('/eval', {
+    fetch(`${API_SERVER_URL}/eval`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
