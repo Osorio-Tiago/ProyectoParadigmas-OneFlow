@@ -2,8 +2,8 @@ import React, {useEffect,useState } from 'react';
 import '../App.css';
 
 
-function Button({id, codeData ,setCodeData, outputData, setOutputData, setEval}) {
-  const [data, setData] = useState(""); // Estado para almacenar datos
+function Button({id, codeData ,setCodeData, outputData, setOutputData, setEval, setIdData}) {
+  const [data, setData] = useState(''); // Estado para almacenar datos
   const [errorMsg, setErrorMsg] = useState('')
   const [hideState, setHidden] = useState(true)
 
@@ -26,6 +26,8 @@ function Button({id, codeData ,setCodeData, outputData, setOutputData, setEval})
       .then(loadedData => {
         console.log(loadedData)
       setCodeData(loadedData.texto);
+      setData(loadedData.id)
+      console.log(data)
       })
       .catch(error => {
         console.error("Error al cargar datos:", error);
@@ -130,6 +132,15 @@ function Button({id, codeData ,setCodeData, outputData, setOutputData, setEval})
       });
     }
   }
+
+
+  const handleClearAll = () => {
+    setCodeData('')
+    setOutputData('')
+    setEval('')
+    setData('')
+    setIdData({target : {value : ''}})
+  } 
     
 
   return (
@@ -140,10 +151,8 @@ function Button({id, codeData ,setCodeData, outputData, setOutputData, setEval})
       <button onClick={handleCompiler}>Compilar</button>
 
       <button onClick={handleEval}>Ejecutar</button>
-      <button>Limpiar</button>
-      <div>{data && <p>Datos cargados: {data.texto}</p>}</div>
-      {/* Asegúrate de mostrar la propiedad correcta del objeto data */}
-
+      <button onClick={handleClearAll}>Limpiar</button>
+      <div>{data && <p>Datos cargados: {data}</p>}</div>
     </div>
  <p hidden = {hideState} id="LoadDataerror" style={{ color: 'red' }}>{errorMsg}</p>
     </div>

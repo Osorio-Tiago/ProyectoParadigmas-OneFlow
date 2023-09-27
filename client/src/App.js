@@ -45,7 +45,9 @@ return (
     <BtonAboutUs/>
 
   <div className='botones'> 
-    <Button id = {inputId} setCodeData = {handleCodeChange} codeData = {code} outputData = {output} setOutputData = {handleOutputChange} setEval = {handleEval}/></div>
+    <Button id = {inputId} setCodeData = {handleCodeChange} 
+                          codeData = {code} outputData = {output} setOutputData = {handleOutputChange} 
+                          setEval = {handleEval} setIdData = {handleInputChange}/></div>
 
     <div className='StyleC'>
       <CodeEditor codeData = {code} setCode={handleCodeChange}  outputData={output} 

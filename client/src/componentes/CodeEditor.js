@@ -23,9 +23,7 @@ const CodeEditor = ({codeData, setCode, outputData, setConsoleOutput, inputData,
 
   const [matching_keywords, setMatching_keywords] = useState([]);
   const [lineCount, setLineCount] = useState(1); 
-  const [wordCount, setWordCount] = useState(0); 
-  const [isDataLoaded, setDataLoaded] = useState(false); 
-  const [searchTerm, setSearchTerm] = useState(''); 
+  const [wordCount, setWordCount] = useState(0);  
 
 
   const clearCode = () => {
@@ -80,6 +78,7 @@ const CodeEditor = ({codeData, setCode, outputData, setConsoleOutput, inputData,
 
   return (
     <>
+      {/*Input to load data by id or save new data*/}
       <div>
         <input
           type="text"
@@ -89,17 +88,17 @@ const CodeEditor = ({codeData, setCode, outputData, setConsoleOutput, inputData,
           value={inputData}
         />
       </div>
+
+       {/*Textarea EA and TA*/}
       <div style={{ display: 'flex' }}>
-        
+      <div style={{ display: 'flex' }}>
         {/*Esto es el text area EA*/}
         <div style={{ flex: '1', paddingLeft: '20px', paddingTop: '10px', overflow: 'auto' }}>
-        <TextAreaWithLineCounter text={codeData} setText={handleChange}/>
+        <TextAreaWithLineCounter text={codeData} setText={handleChange} boolRead ={false}/>
         <div style={{paddingLeft: '15px'}}>
             Líneas: {lineCount} Palabras: {wordCount}
           </div>
           </div>
-         {/*Esto es el text area TA*/}
-        <TextAreaWithLineCounter text={outputData} setText={setConsoleOutput}/>
         <div>
             {matching_keywords.map((word) => (
               <button onClick={() => autoComplete(word)} key={word}>
@@ -108,6 +107,16 @@ const CodeEditor = ({codeData, setCode, outputData, setConsoleOutput, inputData,
             ))}
           </div>
       </div>
+      <div style={{ display: 'flex' }}>
+        {/*Esto es el text area TA*/}
+      <TextAreaWithLineCounter text={outputData} setText={setConsoleOutput} boolRead ={true}/>
+      </div> 
+      </div>
+
+
+
+
+      
       <div>
          {/*Esto es el text area RA*/}
         <textarea

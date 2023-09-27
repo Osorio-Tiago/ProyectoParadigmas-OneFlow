@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-function TextAreaWithLineCounter({text, setText}) {
+function TextAreaWithLineCounter({text, setText, boolRead}) {
 
   const [lines, setLines] = useState([]);
 
@@ -28,7 +28,7 @@ const handleChangeText = ({target : {value}}) => {
     fontSize: '12px', // Ajusta el tamaño de fuente aquí
     color: 'white',
     borderRight: '1px solid #ccc',
-    paddingRight: '4px',
+    //paddingRight: '4px',
     flex: '0 0 auto'
   };
 
@@ -49,6 +49,7 @@ const handleChangeText = ({target : {value}}) => {
     </div>
     <div style={{ flex: '1', display: 'flex', flexDirection: 'column' }}>
       <textarea 
+       readOnly = {boolRead}
         fontSize="1rem"
         value={text}
         onChange={setText}
@@ -63,7 +64,7 @@ const handleChangeText = ({target : {value}}) => {
           boxSizing: 'border-box',
           whiteSpace: 'nowrap',
           overflowX: 'auto',
-          overflowY: 'visible',
+          overflowY: 'hidden',
           resize: 'none'
         }}
       />
