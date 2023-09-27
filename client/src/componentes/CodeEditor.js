@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import TextAreaWithLineCounter from  './textAreaPrueba';
-let keywords = [];
+let keywords = []; // Stores relevant keywords from the code
+
+// Functional component, which accept a series of properties as unsctructured arguments
+const CodeEditor = ({codeData, setCode, outputData, setConsoleOutput, inputData, handleChangeInput, ConsoleData, lineCount, wordCount, setLineCount, setWordCount, wordCountOutput,lineCountOutput}) => {
 
 
-const CodeEditor = ({codeData, setCode, outputData, setConsoleOutput, inputData, handleChangeInput, ConsoleData}) => {
-
+  //The keyword array is updated with the keywords obtained from the server
+  //executed only once after assembling the component
   useEffect(() => {
     fetch("/keywords")
       .then((response) => {
@@ -21,32 +24,38 @@ const CodeEditor = ({codeData, setCode, outputData, setConsoleOutput, inputData,
       });
     }, []);
 
-  const [matching_keywords, setMatching_keywords] = useState([]);
-  const [lineCount, setLineCount] = useState(1); 
-  const [wordCount, setWordCount] = useState(0);  
+
+    //A state is declared to store keywords that match those written by the user
+   
+  const [matching_keywords, setMatching_keywords] = useState([]);  
+  const [columnCount, setColumnCount] = useState(0);
+  const [cursorPosition, setCursorPosition] = useState({ line: 1, column: 1 });
 
 
-  const clearCode = () => {
-    setCode('');
-    setConsoleOutput('');
-    setConsoleOutput('');
-    setLineCount(1); // Restablece el contador de líneas
-    setWordCount(0); // Restablece el contador de palabras
-  };
-
-
+  //we use to autocomplete keywords in the code editor.
+// If a keyword matches, its added to the code.
   const autoComplete = (word) => {
+
+    console.log(word)
     const filteredWords = keywords.filter((keyword) => keyword.includes(word));
 
     if (filteredWords.length > 0) {
-      const newCode = eliminarUltimaPalabra(codeData) + " " + filteredWords[0];
+      const newCode = eliminarUltimaPalabra(codeData) + " "+ filteredWords[0];
       setCode(newCode);
+      setMatching_keywords([])
     }
   };
 
+
+  //These functions are used to get the last word from a text 
+  //string and remove the last word from a text string.
   function obtenerUltimaPalabra(texto) {
+
+    if(texto[texto.length-1] != ' '){
     const palabras = texto.split(' ');
     return palabras.length >= 2 ? palabras[palabras.length - 1] : texto;
+    }
+    return ' '
   }
 
 
@@ -56,50 +65,74 @@ const CodeEditor = ({codeData, setCode, outputData, setConsoleOutput, inputData,
   };
 
     
-  const handleChange = ({ target: { value } }) => {
+
+
+
+  //This function is called when the content of the code editor is changed. 
+  //Updates the status with the new code,
+   //counts the lines and words of the code, and searches for 
+   //matching keywords for autocomplete.
+  const handleChange = ({ target: { value, selectionStart } }) => {
     setCode(value);
-    const inputWord = obtenerUltimaPalabra(value.trim());
+
+    const inputWord = obtenerUltimaPalabra(value) 
 
     // Contar líneas y palabras
-    const lines = value.split('\n').length;
     const words = value.split(/\s+/).filter((word) => word !== '').length;
+    const cols = value.split('\n')[0].length;
 
-    setLineCount(lines);
-    setWordCount(words);
+    const lines = value.substr(0, selectionStart).split('\n');
+    const line = lines.length;
+    const column = lines.pop().length + 1;
 
+    // Actualizar la posición del cursor
+    setCursorPosition({ line, column });
+    setLineCount({target : {value : lines}})
+    setWordCount({target : {value : words}});
+    setColumnCount(cols);
     if (inputWord === "") {
       setMatching_keywords([]);
     } else {
-    
       const matches = keywords.filter((word) => word.startsWith(inputWord));
       setMatching_keywords(matches);
     }
+
+  };
+
+  const handleClick = (e) => {
+    const { selectionStart } = e.target
+    const lines = e.target.value.substr(0, selectionStart).split('\n');
+    const line = lines.length;
+    const column = lines.pop().length + 1;
+
+    // Actualizar la posición del cursor al hacer clic
+    setCursorPosition({ line, column });
   };
 
   return (
     <>
-      {/*Input to load data by id or save new data*/}
+    
+      {/*This section displays a text entry field used to upload or save files.*/}
+      {/*The onChange attributes are bound to the handleChangeInput function, 
+      which means that when the user types in this field,
+        the handleChangeInput function will be called to handle the changes. 
+        The input field value is set to inputData*/}
       <div>
         <input
           type="text"
           placeholder="Guardar o Cargar archivo"
-          style={{ width: '350px', display: 'block', margin: '0 auto' }}
+          style={{ width: '350px', display: 'block'}}
           onChange={handleChangeInput}
           value={inputData}
         />
       </div>
+     
 
-       {/*Textarea EA and TA*/}
-      <div style={{ display: 'flex' }}>
-      <div style={{ display: 'flex' }}>
-        {/*Esto es el text area EA*/}
-        <div style={{ flex: '1', paddingLeft: '20px', paddingTop: '10px', overflow: 'auto' }}>
-        <TextAreaWithLineCounter text={codeData} setText={handleChange} boolRead ={false}/>
-        <div style={{paddingLeft: '15px'}}>
-            Líneas: {lineCount} Palabras: {wordCount}
-          </div>
-          </div>
-        <div>
+     
+        {/*In this section, buttons are displayed that represent keywords that match the user's input. 
+        These buttons are generated by assigning the match_keywords array.*/}
+      <div style={{height: '40px', width: '650px'}}>
+          <div>
             {matching_keywords.map((word) => (
               <button onClick={() => autoComplete(word)} key={word}>
                 {word}
@@ -107,18 +140,32 @@ const CodeEditor = ({codeData, setCode, outputData, setConsoleOutput, inputData,
             ))}
           </div>
       </div>
-      <div style={{ display: 'flex' }}>
-        {/*Esto es el text area TA*/}
-      <TextAreaWithLineCounter text={outputData} setText={setConsoleOutput} boolRead ={true}/>
-      </div> 
-      </div>
-
-
-
 
       
+    {/*Textarea EA and TA*/}
+      {/*Displays text (either code or output data) and are connected to the handleChange or setConsoleOutput functions as needed. Additionally,
+       the number of lines and words in each corresponding text area is displayed.*/}
+    <div style={{ display: 'flex'}}>
+      <div style={{paddingRight: '10px'}}>
+      <TextAreaWithLineCounter text={codeData} setText={handleChange} boolRead ={false} clickFunction = {handleClick}/>
+          <div style={{ paddingLeft: '15px' }}>
+            Línea {cursorPosition.line}, Columna {cursorPosition.column} Palabras: {wordCount}
+          </div>
+      </div>
+
       <div>
-         {/*Esto es el text area RA*/}
+      <TextAreaWithLineCounter text={outputData} setText={setConsoleOutput} boolRead ={true}  clickFunction = {handleClick} />
+        <div style={{paddingLeft: '15px'}}>
+            Líneas: {lineCountOutput} Palabras: {wordCountOutput}
+        </div>
+      </div>
+    </div>
+   
+
+      <div>
+         {/*This is the text area RA*/}
+          {/*Here is shown a read-only text area containing ConsoleData*/}
+
         <textarea
           value={ConsoleData}
           readOnly

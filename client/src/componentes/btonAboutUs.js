@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 
 function BtonAboutUs() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [jsonData, setJsonData] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false); // Change the value and control when show or hide the modal 
+  const [jsonData, setJsonData] = useState(null); // This state it use for store and negotiate Json data components
 
+  //This function is use to GET json data to the server for take 
+  //data from 'about'
   const fetchJsonData = () => {
     fetch('/about')
       .then((response) => {
@@ -21,26 +23,30 @@ function BtonAboutUs() {
       });
   };
 
+  //Close the modal interfaz 
   const closeModal = () => {
     setIsModalOpen(false);
   };
 
-
-  const formatStudentData = (students) => {
-    return students.map((student) => {
-      return `Estudiante: ${student.nombre}, Equipo: ${student.equipo}, Curso: ${student.curso}, Proyecto: ${student.proyecto}, Semestre: ${student.semestre}, Año: ${student.anio}, Escuela: ${student.escuela}, Universidad: ${student.universidad}.`;
-    }).join('\n');
+  const aboutUsData = (students) => {
+    // List with all the students names
+    const names = students.map((student) => student.nombre);
+  
+    // All the common data just to don´t show it repeated
+    const commonData = `Equipo: ${students[0].equipo}, Curso: ${students[0].curso}, Proyecto: ${students[0].proyecto},\nSemestre: ${students[0].semestre}, Año: ${students[0].anio}, Escuela: ${students[0].escuela}, Universidad: ${students[0].universidad}.`;
+  
+    // We concatenate student names and common data
+    return `Estudiantes: ${names.join(', ')}.\n${commonData}`;
   };
-
   return (
     <div>
       <button onClick={fetchJsonData}>About us</button>
-
-      {isModalOpen && (
+      {/*This is the about and close button**/}
+      {isModalOpen && (        
         <div className="modal">
           <div className="modal-content">
             <button onClick={closeModal}>Cerrar</button>
-            <pre style={{ color: 'white', fontSize: '16.5px' }}>{formatStudentData(jsonData.estudiantes)}</pre>
+            <pre style={{ color: 'white', fontSize: '16.5px' }}>{aboutUsData(jsonData.estudiantes)}</pre>
           </div>
         </div>
       )}

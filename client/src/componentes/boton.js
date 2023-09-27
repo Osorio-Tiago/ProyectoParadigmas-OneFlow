@@ -2,16 +2,19 @@ import React, {useEffect,useState } from 'react';
 import '../App.css';
 
 
-function Button({id, codeData ,setCodeData, outputData, setOutputData, setEval, setIdData}) {
-  const [data, setData] = useState(''); // Estado para almacenar datos
-  const [errorMsg, setErrorMsg] = useState('')
-  const [hideState, setHidden] = useState(true)
+function Button({id, codeData ,setCodeData, outputData, setOutputData, setEval, setIdData, setLinesCount, setWordCount, setLinesCountOutput, setWordCountOutput}) {
+  const [data, setData] = useState(''); // State to store data
+  const [errorMsg, setErrorMsg] = useState('')//State to store error messages
+  const [hideState, setHidden] = useState(true)//Controls whether to hide or show an error message
 
 
-  const handleLoadData = () => {
+
+  
+//Load data. Make an HTTP request using fetch to load data from the server
+  const handleLoadData = () => { 
 
     if(!id){
-      setErrorMsg('Debe completar el campo de id para cargar archivo')
+      setErrorMsg('Debe introducir el nombre del archivo para cargar archivo')
       setHidden(false)
     }else{
       setHidden(true)
@@ -24,10 +27,16 @@ function Button({id, codeData ,setCodeData, outputData, setOutputData, setEval, 
         return response.json(); 
       })
       .then(loadedData => {
-        console.log(loadedData)
+        loadedData.texto = loadedData.texto.replace(/\\n/g, '\n');
       setCodeData(loadedData.texto);
       setData(loadedData.id)
-      console.log(data)
+
+      const lines = loadedData.texto.split('\n').length;
+      const words = loadedData.texto.split(/\s+/).filter((word) => word !== '').length;
+  
+      setLinesCount({target : {value : lines}})
+      setWordCount({target : {value : words}});
+
       })
       .catch(error => {
         console.error("Error al cargar datos:", error);
@@ -35,6 +44,9 @@ function Button({id, codeData ,setCodeData, outputData, setOutputData, setEval, 
   };
 }
 
+
+//Save the data and make an HTTP POST request if there are values to
+//a server/script for svae data that give in id and codeData
   const handleSaveData = () => {
     if(!id || !codeData){
       setErrorMsg('Se deben completar los campos de nombre de archivo y el contenido del archivo para guardar los datos')
@@ -68,6 +80,11 @@ function Button({id, codeData ,setCodeData, outputData, setOutputData, setEval, 
   };
 }
 
+
+
+//Compilation function. If codeData is not empty
+//then make an HTTP POST request to compile the code given in codeData
+
   const handleCompiler = () => {
 
     if(!codeData){
@@ -92,15 +109,24 @@ function Button({id, codeData ,setCodeData, outputData, setOutputData, setEval, 
           return response.json();
         })
         .then(compilationResult => {
+          compilationResult.result = compilationResult.result.replace(/\n/g, '\r\n');
           setOutputData(compilationResult.result);
+
+          const lines = compilationResult.result.split('\n').length;
+          const words = compilationResult.result.split(/\s+/).filter((word) => word !== '').length;
+      
+          setLinesCountOutput({target : {value : lines}})
+          setWordCountOutput({target : {value : words}});
         })
         .catch(error => {
           console.error("Error al compilar:", error);
         });
     };
-  
-}
     
+}
+ 
+//Eval function this have a POST 
+//request to the server for execute the code
   const handleEval = () => {
     if(!codeData){
       setErrorMsg('Se debe completar los campos para ejecutar el archivo')
@@ -133,16 +159,25 @@ function Button({id, codeData ,setCodeData, outputData, setOutputData, setEval, 
     }
   }
 
-
+// Is responsible for clearing or resetting various 
+// states and values in the application
   const handleClearAll = () => {
     setCodeData('')
     setOutputData('')
     setEval('')
     setData('')
     setIdData({target : {value : ''}})
+    setLinesCount({target : {value : 1}})
+    setWordCount({target : {value : 0}})
+    setLinesCountOutput({target : {value : 1}})
+    setWordCountOutput({target : {value : 0}})
+    setHidden(true)
+    setErrorMsg('')
   } 
     
 
+//Returns the buttons with the respective functions of load, save, compile, run and clean.
+//Has a status if the id being used does not match and displays an error message
   return (
     <div >
     <div className='Button'>
@@ -154,7 +189,7 @@ function Button({id, codeData ,setCodeData, outputData, setOutputData, setEval, 
       <button onClick={handleClearAll}>Limpiar</button>
       <div>{data && <p>Datos cargados: {data}</p>}</div>
     </div>
- <p hidden = {hideState} id="LoadDataerror" style={{ color: 'red' }}>{errorMsg}</p>
+ <p hidden = {hideState} id="LoadDataerror" style={{ color: 'red'}}>{errorMsg}</p>
     </div>
   );
 }

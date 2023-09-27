@@ -1,13 +1,8 @@
 import React, { useState, useEffect } from 'react';
 
-function TextAreaWithLineCounter({text, setText, boolRead}) {
+function TextAreaWithLineCounter({text, setText, boolRead, clickFunction}) {
 
   const [lines, setLines] = useState([]);
-
-
-const handleChangeText = ({target : {value}}) => {
-  setText(text)
-}
 
   // Función para dividir el texto en líneas
   const splitTextIntoLines = (text) => {
@@ -20,18 +15,19 @@ const handleChangeText = ({target : {value}}) => {
   };
 
   useEffect(() => {
-    // Actualiza las líneas cuando cambia el texto
+    // Update the lines when change the text
     setLines(splitTextIntoLines(text));
   }, [text]); //Every time text changes useEffect is called
 
+  
   const lineCounterStyle = {
-    fontSize: '12px', // Ajusta el tamaño de fuente aquí
+    fontSize: '12px', // Adjust the font size from here
     color: 'white',
     borderRight: '1px solid #ccc',
     //paddingRight: '4px',
-    flex: '0 0 auto'
+    flex: '0 0 auto',
+    background: '#0c3c4a'
   };
-
 
   return (
   <div style={{ display: 'flex' ,overflowY: 'scroll' }}>
@@ -53,9 +49,10 @@ const handleChangeText = ({target : {value}}) => {
         fontSize="1rem"
         value={text}
         onChange={setText}
+        onClick={clickFunction}
         rows={10}
         cols={40}
-        
+        spellCheck="false"
         style={{
           width: '100%',
           height: '100%',
@@ -65,7 +62,8 @@ const handleChangeText = ({target : {value}}) => {
           whiteSpace: 'nowrap',
           overflowX: 'auto',
           overflowY: 'hidden',
-          resize: 'none'
+          resize: 'none',
+          whiteSpace: 'pre-line'
         }}
       />
     </div>

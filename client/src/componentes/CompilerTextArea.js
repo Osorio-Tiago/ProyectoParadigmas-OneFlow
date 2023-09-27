@@ -2,7 +2,7 @@ import React, { useState} from 'react';
 import '../App.css';
 
 
-function CompilerTextArea() {
+function CompilerTextArea() { 
   const [code, setCode] = useState('');
   const [result, setResult] = useState('');
 
