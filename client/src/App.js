@@ -20,6 +20,22 @@ function App() {
 
 /////////////////////////////////////////////////////////////////////////////
 
+const [code, setCode] = useState('');
+const [output, setOutput] = useState('');
+const [consoleOutput, setConsoleOutput] = useState('');
+const [inputId, setInputId] = useState('');
+
+
+const handleCodeChange = (text) => {
+  setCode(text)
+}
+
+const handleInputChange = (text) => {
+  setInputId(text)
+}
+
+
+
 return (
   <div className="App">
     {typeof backendData.users === 'undefined' ? (
@@ -30,10 +46,10 @@ return (
       ))
     )}
  
-  <div className='botones'> <Button/></div>
+  <div className='botones'> <Button id = {inputId} setCodeData = {handleCodeChange}/></div>
 
     <div className='StyleC'>
-    <CodeEditor/>
+    <CodeEditor codeData = {code} setCode={handleCodeChange}  setOutput={output} setConsoleOutput={consoleOutput} inputData = {handleInputChange}/>
     </div>
 
     

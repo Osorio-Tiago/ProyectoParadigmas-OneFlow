@@ -2,14 +2,14 @@ import React, {useEffect,useState } from 'react';
 import '../App.css';
 
 
-function Button() {
+function Button({id, setCodeData}) {
   const [data, setData] = useState(""); // Estado para almacenar datos
   const [code, setCode] = useState("");
 
   
   const handleLoadData = () => {
    
-    fetch('/script/4')
+    fetch(`/script/'${id}`)
       .then(response => {
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
@@ -17,7 +17,7 @@ function Button() {
         return response.json(); 
       })
       .then(loadedData => {
-        setData(loadedData);
+        setCodeData(loadedData);
       })
       .catch(error => {
         console.error("Error al cargar datos:", error);

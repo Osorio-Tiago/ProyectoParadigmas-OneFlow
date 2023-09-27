@@ -2,36 +2,38 @@ import React, { useEffect, useState } from 'react';
 
 let keywords = [];
 
-fetch("/keywords")
-  .then((response) => {
-    if (!response.ok) {
-      throw new Error("Error al obtener las palabras clave");
-    }
-    return response.json();
-  })
-  .then((data) => {
-    keywords = data.palabrasReservadas; // Set keywords array with info returned by fetch from api
-  })
-  .catch((error) => {
-    console.error(error);
-  });
 
-function CodeEditor() {
-  const [code, setCode] = useState('');
-  const [output, setOutput] = useState('');
+const CodeEditor = ({codeData, setCode, setOutput, setConsoleOutput, inputData}) => {
+
+  useEffect(() => {
+    fetch("/keywords")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Error al obtener las palabras clave");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        keywords = data.palabrasReservadas; // Set keywords array with info returned by fetch from api
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+    }, []);
+
   const [matching_keywords, setMatching_keywords] = useState([]);
-  const [consoleOutput, setConsoleOutput] = useState('');
   const [lineCount, setLineCount] = useState(1); 
   const [wordCount, setWordCount] = useState(0); 
-
   const [isDataLoaded, setDataLoaded] = useState(false); 
   const [searchTerm, setSearchTerm] = useState(''); 
+
+
 
   const autoComplete = (word) => {
     const filteredWords = matching_keywords.filter((keyword) => keyword.includes(word));
 
     if (filteredWords.length > 0) {
-      const newCode = eliminarUltimaPalabra(code) + " " + filteredWords[0];
+      const newCode = eliminarUltimaPalabra(codeData) + " " + filteredWords[0];
       setCode(newCode);
     }
   };
@@ -65,7 +67,7 @@ function CodeEditor() {
     const palabras = texto.split(' ');
     return palabras.length >= 2 ? palabras.slice(0, -1).join(' ') : '';
   };
-
+/*
   const runCode = () => {
     try {
       const result = Function('"use strict";return (' + code + ')')();
@@ -76,7 +78,7 @@ function CodeEditor() {
       setConsoleOutput(`Error: ${error.message}`);
     }
   };
-
+*/
   const clearCode = () => {
     setCode('');
     setOutput('');
@@ -94,11 +96,12 @@ function CodeEditor() {
           type="text"
           placeholder="Buscar o cargar archivo"
           style={{ width: '350px', display: 'block', margin: '0 auto' }}
+          onChange={inputData}
         />
       </div>
       <div style={{ display: 'flex' }}>
         <div style={{ flex: '0 0 auto', padding: '10px', borderRight: '1px solid #ccc' }}>
-          {code.split('\n').map((line, index) => (
+          {codeData.split('\n').map((line, index) => (
             <div
               key={index}
               style={{
@@ -111,9 +114,11 @@ function CodeEditor() {
             </div>
           ))}
         </div>
+
+        {/*Esto es el text area EA*/}
         <div style={{ flex: '1', padding: '10px', overflow: 'auto' }}>
           <textarea
-            value={code}
+            value={codeData}
             onChange={handleChange}
             style={{
               width: '350px',
@@ -127,7 +132,7 @@ function CodeEditor() {
               overflowX: 'auto',
             }}
           />
-          <button onClick={runCode}>Ejecutar</button>
+          <button>Ejecutar</button>
           <button onClick={clearCode}>Limpiar</button>
           <div>
             Líneas: {lineCount} Palabras: {wordCount}
@@ -136,7 +141,7 @@ function CodeEditor() {
         <div style={{ flex: '1', padding: '10px' }}>
           <div>
             <textarea
-              value={output}
+              value={setOutput}
               readOnly
               style={{
                 width: '350px',
@@ -161,7 +166,7 @@ function CodeEditor() {
       </div>
       <div>
         <textarea
-          value={consoleOutput}
+          value={setConsoleOutput}
           readOnly
           style={{
             width: '700px',
