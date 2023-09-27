@@ -45,6 +45,8 @@ function Button() {
       <button onClick={handleLoadData}>Cargar Datos</button>
       <button onClick={handleSaveData}>Guardar Datos</button>
       <button onClick={handleCompiler}>Compilar</button>
+      <button>Ejecutar</button>
+      <button>Limpiar</button>
       <div>{data && <p>Datos cargados: {data.texto}</p>}</div>
       {/* Asegúrate de mostrar la propiedad correcta del objeto data */}
     </div>
