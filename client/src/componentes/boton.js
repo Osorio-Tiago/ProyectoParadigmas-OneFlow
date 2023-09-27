@@ -4,7 +4,7 @@ import '../App.css';
 
 function Button() {
   const [data, setData] = useState(""); // Estado para almacenar datos
-  const [code, setCode] = useState("");
+
 
   
   const handleLoadData = () => {
