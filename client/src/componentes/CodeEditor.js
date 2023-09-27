@@ -194,11 +194,6 @@ function CodeEditor() {
           }}
         />
       </div>
-      <div>
-        <button onClick={isDataLoaded ? saveData : loadData} style={{ display: 'block', margin: '0 auto' }}>
-          {isDataLoaded ? 'Guardar Datos' : 'Cargar Datos'}
-        </button>
-      </div>
     </>
   );
 }
