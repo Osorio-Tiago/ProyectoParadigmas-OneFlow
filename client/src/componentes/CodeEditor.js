@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 let keywords = [];
 
 
-const CodeEditor = ({codeData, setCode, setOutput, setConsoleOutput, inputData}) => {
+const CodeEditor = ({codeData, setCode, setOutput, setConsoleOutput, inputData, handleChangeInput}) => {
 
   useEffect(() => {
     fetch("/keywords")
@@ -96,7 +96,8 @@ const CodeEditor = ({codeData, setCode, setOutput, setConsoleOutput, inputData})
           type="text"
           placeholder="Buscar o cargar archivo"
           style={{ width: '350px', display: 'block', margin: '0 auto' }}
-          onChange={inputData}
+          onChange={handleChangeInput}
+          value={inputData}
         />
       </div>
       <div style={{ display: 'flex' }}>

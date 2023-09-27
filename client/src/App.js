@@ -30,8 +30,8 @@ const handleCodeChange = (text) => {
   setCode(text)
 }
 
-const handleInputChange = (text) => {
-  setInputId(text)
+const handleInputChange = ({target : {value}}) => {
+  setInputId(value)
 }
 
 
@@ -46,13 +46,15 @@ return (
       ))
     )}
  
-  <div className='botones'> <Button id = {inputId} setCodeData = {handleCodeChange}/></div>
+  <div className='botones'> 
+    <Button id = {inputId} setCodeData = {handleCodeChange}/></div>
 
     <div className='StyleC'>
-    <CodeEditor codeData = {code} setCode={handleCodeChange}  setOutput={output} setConsoleOutput={consoleOutput} inputData = {handleInputChange}/>
+      <CodeEditor codeData = {code} setCode={handleCodeChange}  setOutput={output} 
+                setConsoleOutput={consoleOutput} inputData = {inputId} 
+                handleChangeInput = {handleInputChange}
+      />
     </div>
-
-    
   </div>
 );
 
