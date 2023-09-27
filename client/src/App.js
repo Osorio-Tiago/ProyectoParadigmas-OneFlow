@@ -1,9 +1,11 @@
 import React, {useEffect, useState } from 'react'
-//import './App.css';
+import './App.css';
 import Button from './componentes/boton';
 import CodeEditor from './componentes/CodeEditor';
 import BtonAboutUs from './componentes/btonAboutUs';
 import TextAreaWithLineCounter from  './componentes/textAreaPrueba';
+
+
 function App() {
 
   /*

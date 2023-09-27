@@ -35,7 +35,7 @@ function Button({id, codeData ,setCodeData, outputData, setOutputData, setEval})
 
   const handleSaveData = () => {
     if(!id || !codeData){
-      setErrorMsg('Se debe completar el campo para guardar archivo')
+      setErrorMsg('Se deben completar los campos de nombre de archivo y el contenido del archivo para guardar los datos')
       setHidden(false)
     }else {
       setHidden(true)
@@ -48,7 +48,7 @@ function Button({id, codeData ,setCodeData, outputData, setOutputData, setEval})
       },
       body: JSON.stringify({
         'id': id,
-        'texto': JSON.stringify(codeData)
+        'texto': codeData
       })
     })
       .then(response => {
