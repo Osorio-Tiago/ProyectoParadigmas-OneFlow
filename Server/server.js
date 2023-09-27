@@ -25,8 +25,9 @@ app.get("/keywords", (req, res) => {
 });
 
 // GET METHOD RETURN ABOUT US INFO
-app.get('/', (req, res) => {
-    res.json(crud.readAboutUs())
+app.get('/about', (req, res) => {
+  crud.readAboutUs().then((aboutUs) =>
+  res.json(aboutUs)).catch((err) => console.log(err))
 })
 
 

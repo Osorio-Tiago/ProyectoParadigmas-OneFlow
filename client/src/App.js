@@ -1,15 +1,12 @@
 import React, {useEffect, useState } from 'react'
-import './App.css';
+//import './App.css';
 import Button from './componentes/boton';
 import CodeEditor from './componentes/CodeEditor';
-import CompilerTextArea from './componentes/CompilerTextArea';
-
-
+import BtonAboutUs from './componentes/btonAboutUs';
+import TextAreaWithLineCounter from  './componentes/textAreaPrueba';
 function App() {
 
-  // Example using fetch from data in server
-  const [backendData, setBackendData] = useState([{}])
-
+  /*
   useEffect(() => {
     fetch('/api')
     .then(response => response.json())
@@ -17,14 +14,13 @@ function App() {
       setBackendData(data);
     });
   }, []);
-
+*/
 /////////////////////////////////////////////////////////////////////////////
 
 const [code, setCode] = useState('');
 const [output, setOutput] = useState('');
 const [consoleOutput, setConsoleOutput] = useState('');
 const [inputId, setInputId] = useState('');
-
 
 const handleCodeChange = (text) => {
   setCode(text)
@@ -34,25 +30,25 @@ const handleInputChange = ({target : {value}}) => {
   setInputId(value)
 }
 
+const handleOutputChange = (text) => {
+  setOutput(text)
+}
 
+const handleEval = (text) => {
+  setConsoleOutput(text)
+}
 
 return (
   <div className="App">
-    {typeof backendData.users === 'undefined' ? (
-      <p>Loading data from server...</p>
-    ) : (
-      backendData.users.map((user, i) => (
-        <p key={i}>{user}</p>
-      ))
-    )}
- 
+    <BtonAboutUs/>
+
   <div className='botones'> 
-    <Button id = {inputId} setCodeData = {handleCodeChange}/></div>
+    <Button id = {inputId} setCodeData = {handleCodeChange} codeData = {code} outputData = {output} setOutputData = {handleOutputChange} setEval = {handleEval}/></div>
 
     <div className='StyleC'>
-      <CodeEditor codeData = {code} setCode={handleCodeChange}  setOutput={output} 
-                setConsoleOutput={consoleOutput} inputData = {inputId} 
-                handleChangeInput = {handleInputChange}
+      <CodeEditor codeData = {code} setCode={handleCodeChange}  outputData={output} 
+                setConsoleOutput={handleOutputChange} inputData = {inputId} 
+                handleChangeInput = {handleInputChange} ConsoleData = {consoleOutput}
       />
     </div>
   </div>

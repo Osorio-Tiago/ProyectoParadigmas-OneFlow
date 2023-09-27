@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-
+import TextAreaWithLineCounter from  './textAreaPrueba';
 let keywords = [];
 
 
-const CodeEditor = ({codeData, setCode, setOutput, setConsoleOutput, inputData, handleChangeInput}) => {
+const CodeEditor = ({codeData, setCode, outputData, setConsoleOutput, inputData, handleChangeInput, ConsoleData}) => {
 
   useEffect(() => {
     fetch("/keywords")
@@ -28,9 +28,17 @@ const CodeEditor = ({codeData, setCode, setOutput, setConsoleOutput, inputData, 
   const [searchTerm, setSearchTerm] = useState(''); 
 
 
+  const clearCode = () => {
+    setCode('');
+    setConsoleOutput('');
+    setConsoleOutput('');
+    setLineCount(1); // Restablece el contador de líneas
+    setWordCount(0); // Restablece el contador de palabras
+  };
+
 
   const autoComplete = (word) => {
-    const filteredWords = matching_keywords.filter((keyword) => keyword.includes(word));
+    const filteredWords = keywords.filter((keyword) => keyword.includes(word));
 
     if (filteredWords.length > 0) {
       const newCode = eliminarUltimaPalabra(codeData) + " " + filteredWords[0];
@@ -38,6 +46,18 @@ const CodeEditor = ({codeData, setCode, setOutput, setConsoleOutput, inputData, 
     }
   };
 
+  function obtenerUltimaPalabra(texto) {
+    const palabras = texto.split(' ');
+    return palabras.length >= 2 ? palabras[palabras.length - 1] : texto;
+  }
+
+
+  const eliminarUltimaPalabra = (texto) => {
+    const palabras = texto.split(' ');
+    return palabras.length >= 2 ? palabras.slice(0, -1).join(' ') : '';
+  };
+
+    
   const handleChange = ({ target: { value } }) => {
     setCode(value);
     const inputWord = obtenerUltimaPalabra(value.trim());
@@ -58,116 +78,40 @@ const CodeEditor = ({codeData, setCode, setOutput, setConsoleOutput, inputData, 
     }
   };
 
-  function obtenerUltimaPalabra(texto) {
-    const palabras = texto.split(' ');
-    return palabras.length >= 2 ? palabras[palabras.length - 1] : texto;
-  }
-
-  const eliminarUltimaPalabra = (texto) => {
-    const palabras = texto.split(' ');
-    return palabras.length >= 2 ? palabras.slice(0, -1).join(' ') : '';
-  };
-/*
-  const runCode = () => {
-    try {
-      const result = Function('"use strict";return (' + code + ')')();
-      setOutput(result);
-      setConsoleOutput(result);
-    } catch (error) {
-      setOutput(`Error: ${error.message}`);
-      setConsoleOutput(`Error: ${error.message}`);
-    }
-  };
-*/
-  const clearCode = () => {
-    setCode('');
-    setOutput('');
-    setConsoleOutput('');
-    setLineCount(1); // Restablece el contador de líneas
-    setWordCount(0); // Restablece el contador de palabras
-  };
-
-
-
   return (
     <>
       <div>
         <input
           type="text"
-          placeholder="Buscar o cargar archivo"
+          placeholder="Guardar o Cargar archivo"
           style={{ width: '350px', display: 'block', margin: '0 auto' }}
           onChange={handleChangeInput}
           value={inputData}
         />
       </div>
       <div style={{ display: 'flex' }}>
-        <div style={{ flex: '0 0 auto', padding: '10px', borderRight: '1px solid #ccc' }}>
-          {codeData.split('\n').map((line, index) => (
-            <div
-              key={index}
-              style={{
-                textAlign: 'right',
-                paddingRight: '5px',
-                color: '#fff',
-              }}
-            >
-              {index + 1}
-            </div>
-          ))}
-        </div>
-
+        
         {/*Esto es el text area EA*/}
-        <div style={{ flex: '1', padding: '10px', overflow: 'auto' }}>
-          <textarea
-            value={codeData}
-            onChange={handleChange}
-            style={{
-              width: '350px',
-              height: '400px',
-              border: 'none',
-              outline: 'none',
-              resize: 'none',
-              padding: '10px',
-              boxSizing: 'border-box',
-              whiteSpace: 'nowrap',
-              overflowX: 'auto',
-            }}
-          />
-          <button>Ejecutar</button>
-          <button onClick={clearCode}>Limpiar</button>
-          <div>
+        <div style={{ flex: '1', paddingLeft: '20px', paddingTop: '10px', overflow: 'auto' }}>
+        <TextAreaWithLineCounter text={codeData} setText={handleChange}/>
+        <div style={{paddingLeft: '15px'}}>
             Líneas: {lineCount} Palabras: {wordCount}
           </div>
-        </div>
-        <div style={{ flex: '1', padding: '10px' }}>
-          <div>
-            <textarea
-              value={setOutput}
-              readOnly
-              style={{
-                width: '350px',
-                height: '400px',
-                border: 'none',
-                outline: 'none',
-                resize: 'none',
-                padding: '10px',
-                boxSizing: 'border-box',
-                overflowX: 'scroll',
-              }}
-            />
           </div>
-          <div>
+         {/*Esto es el text area TA*/}
+        <TextAreaWithLineCounter text={outputData} setText={setConsoleOutput}/>
+        <div>
             {matching_keywords.map((word) => (
               <button onClick={() => autoComplete(word)} key={word}>
                 {word}
               </button>
             ))}
           </div>
-        </div>
       </div>
       <div>
+         {/*Esto es el text area RA*/}
         <textarea
-          value={setConsoleOutput}
+          value={ConsoleData}
           readOnly
           style={{
             width: '700px',

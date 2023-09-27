@@ -1,20 +1,18 @@
+const { rejects } = require('assert');
+
 const fs = require('fs').promises;
 
 const readAboutUs = () => { 
-    const aboutUs = fs.readFileSync('./json-documents/about.json')
-    const aboutUsJson = JSON.parse(aboutUs)
-
-    return aboutUsJson
+  return new Promise((resolve, reject) =>{
+    fs.readFile('./json-documents/about.json', 'utf-8')
+    .then((aboutInfo) => {
+      const aboutUsJson = JSON.parse(aboutInfo)
+      resolve(aboutUsJson)
+    }).catch((error) => {
+      reject(error)
+    })
+  })
 }
-
-/*
-const readKeywords = () => { 
-  const keywords = fs.readFileSync('./json-documents/keywords.json')
-  const keywordsJson = JSON.parse(keywords)
-  return keywordsJson
-}
-*/
-
 
 const readKeywords = () => {
   return new Promise((resolve, reject) => {
