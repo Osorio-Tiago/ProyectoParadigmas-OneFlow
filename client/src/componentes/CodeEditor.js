@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 let keywords = [];
 
@@ -21,11 +21,11 @@ function CodeEditor() {
   const [output, setOutput] = useState('');
   const [matching_keywords, setMatching_keywords] = useState([]);
   const [consoleOutput, setConsoleOutput] = useState('');
-  const [lineCount, setLineCount] = useState(1); // Nuevo estado para el contador de líneas
-  const [wordCount, setWordCount] = useState(0); // Nuevo estado para el contador de palabras
+  const [lineCount, setLineCount] = useState(1); 
+  const [wordCount, setWordCount] = useState(0); 
 
-  const [isDataLoaded, setDataLoaded] = useState(false); // Nuevo estado para controlar si los datos están cargados
-  const [searchTerm, setSearchTerm] = useState(''); // Nuevo estado para el término de búsqueda
+  const [isDataLoaded, setDataLoaded] = useState(false); 
+  const [searchTerm, setSearchTerm] = useState(''); 
 
   const autoComplete = (word) => {
     const filteredWords = matching_keywords.filter((keyword) => keyword.includes(word));
@@ -50,7 +50,7 @@ function CodeEditor() {
     if (inputWord === "") {
       setMatching_keywords([]);
     } else {
-      // Filter keywords that start with the inputWord
+    
       const matches = keywords.filter((word) => word.startsWith(inputWord));
       setMatching_keywords(matches);
     }

@@ -1,50 +1,85 @@
-import React, { useState } from 'react';
+import React, {useEffect,useState } from 'react';
 import '../App.css';
-import axios from 'axios';
+
 
 function Button() {
   const [data, setData] = useState(""); // Estado para almacenar datos
+  const [code, setCode] = useState("");
 
+  
   const handleLoadData = () => {
-    
-    axios.get('/script/4') // ruta correcta para cargar los datos
+   
+    fetch('/script/4')
       .then(response => {
-        
-        const loadedData = response.data; // Suponiendo que la respuesta contiene los datos que deseas cargar
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json(); 
+      })
+      .then(loadedData => {
         setData(loadedData);
       })
       .catch(error => {
-        // Manejar errores aquí
         console.error("Error al cargar datos:", error);
       });
   };
 
-  const handleSaveData = () => {
-    // Datos que deseas enviar al servidor
-    const dataToSave = { id: "4", texto: "Tercer objeto con ID 4." };
 
-    // Realizar una solicitud POST al servidor
-    axios.post('/script/save', dataToSave)
+  const handleSaveData = () => {
+   
+    const dataToSave = { id: "4", texto: "Tercer objeto con ID 4." };
+    fetch('/script/save', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(dataToSave)
+    })
       .then(response => {
-        // Si la solicitud se realiza correctamente, aquí puedes verificar la respuesta
-        console.log("Respuesta del servidor:", response.data);
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then(responseData => {
+        console.log("Respuesta del servidor:", responseData);
       })
       .catch(error => {
-        // Si hay un error en la solicitud, aquí puedes manejarlo e imprimir el mensaje de error
-        console.error("Error al enviar datos al servidor:", error);
+     console.error("Error al enviar datos al servidor:", error);
       });
   };
 
   const handleCompiler = () => {
-    // Redirigir a otra página o realizar alguna acción de compilación
-    window.location.href = '/';
-  };
+      const codeToCompile = code; 
+      fetch('/compile', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ code: codeToCompile })
+      })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+          }
+          return response.json();
+        })
+        .then(compilationResult => {
+          setData(compilationResult.result);
+        })
+        .catch(error => {
+          console.error("Error al compilar:", error);
+        });
+    };
+    //window.location.href = '/';
+
 
   return (
     <div className='Button'>
       <button onClick={handleLoadData}>Cargar Datos</button>
       <button onClick={handleSaveData}>Guardar Datos</button>
       <button onClick={handleCompiler}>Compilar</button>
+
       <button>Ejecutar</button>
       <button>Limpiar</button>
       <div>{data && <p>Datos cargados: {data.texto}</p>}</div>
