@@ -9,7 +9,7 @@ function Button({id, setCodeData}) {
   
   const handleLoadData = () => {
    
-    fetch(`/script/'${id}`)
+    fetch(`/script/${id}`)
       .then(response => {
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
@@ -17,7 +17,8 @@ function Button({id, setCodeData}) {
         return response.json(); 
       })
       .then(loadedData => {
-        setCodeData(loadedData);
+        console.log(loadedData)
+      setCodeData(loadedData.texto);
       })
       .catch(error => {
         console.error("Error al cargar datos:", error);
@@ -48,7 +49,7 @@ function Button({id, setCodeData}) {
      console.error("Error al enviar datos al servidor:", error);
       });
   };
-
+/*
   const handleCompiler = () => {
       const codeToCompile = code; 
       fetch('/compile', {
@@ -73,12 +74,12 @@ function Button({id, setCodeData}) {
     };
     //window.location.href = '/';
 
-
+*/
   return (
     <div className='Button'>
       <button onClick={handleLoadData}>Cargar Datos</button>
       <button onClick={handleSaveData}>Guardar Datos</button>
-      <button onClick={handleCompiler}>Compilar</button>
+      {/*<button onClick={handleCompiler}>Compilar</button>*/ }
 
       <button>Ejecutar</button>
       <button>Limpiar</button>
