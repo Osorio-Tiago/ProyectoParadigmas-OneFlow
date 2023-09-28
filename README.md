@@ -11,7 +11,7 @@ En caso de desear iniciar el proyecto a mano se puede seguir lo siguiente:
 
     ```bash
     npm install
-    npm run dev
+    npm start
     ```
 
 2. Después abrimos una consola en la ruta `ProyectoParadigmas-OneFlow/client` y ejecutamos lo siguiente:
