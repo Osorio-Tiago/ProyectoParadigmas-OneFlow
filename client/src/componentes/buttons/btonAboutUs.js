@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
+import './btonAboutUs.css'
+import { API_SERVER_URL } from '../Url';
 
 function BtonAboutUs() {
   const [isModalOpen, setIsModalOpen] = useState(false); // Change the value and control when show or hide the modal 
   const [jsonData, setJsonData] = useState(null); // This state it use for store and negotiate Json data components
 
-  //This function is use to GET json data to the server for take 
-  //data from 'about'
+  //Get about us data from server to show it on a modal
   const fetchJsonData = () => {
-    fetch('http://localhost:3001/about')
+    fetch(`${API_SERVER_URL}/about`)
       .then((response) => {
         if (!response.ok) {
           throw new Error('Error al obtener los datos');
@@ -33,10 +34,10 @@ function BtonAboutUs() {
     const names = students.map((student) => student.nombre);
   
     // All the common data just to don´t show it repeated
-    const commonData = `Equipo: ${students[0].equipo}, Curso: ${students[0].curso}, Proyecto: ${students[0].proyecto},\nSemestre: ${students[0].semestre}, Año: ${students[0].anio}, Escuela: ${students[0].escuela}, Universidad: ${students[0].universidad}.`;
+    const commonData = `Equipo: ${students[0].equipo}\nCurso: ${students[0].curso}\nProyecto: ${students[0].proyecto}\nSemestre: ${students[0].semestre}\nAño: ${students[0].anio}\nEscuela: ${students[0].escuela}\nUniversidad: ${students[0].universidad}`;
   
     // We concatenate student names and common data
-    return `Estudiantes: ${names.join(', ')}.\n${commonData}`;
+    return `\nEstudiantes: ${names.join(', ')}\n${commonData}`;
   };
   return (
     <div>
@@ -45,13 +46,15 @@ function BtonAboutUs() {
       {isModalOpen && (        
         <div className="modal">
           <div className="modal-content">
-            <button onClick={closeModal}>Cerrar</button>
-            <pre style={{ color: 'white', fontSize: '16.5px' }}>{aboutUsData(jsonData.estudiantes)}</pre>
+            <div class="modal-header">
+              <h2>About us</h2>
+            </div>
+            <pre style={{ color: 'black', fontSize: '16.5px' }}>{aboutUsData(jsonData.estudiantes)}</pre>
+            <button class='close-button' onClick={closeModal}>Cerrar</button>
           </div>
         </div>
       )}
     </div>
   );
 }
-
 export default BtonAboutUs;

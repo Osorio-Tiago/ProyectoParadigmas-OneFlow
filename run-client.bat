@@ -1,2 +1,2 @@
 cd client
-npm start
+npm install && npm run build && cd build && http-server

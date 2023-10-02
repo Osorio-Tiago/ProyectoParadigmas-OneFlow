@@ -40,10 +40,8 @@ const responseEval = () => {
   });
 };
 
-const save = (req) => {
+const save = ({ id, texto }) => {
   return new Promise((resolve, reject) => {
-    const { id, texto } = req.body;
-
     if (typeof id === 'undefined' || typeof texto === 'undefined') {
       reject(new Error("ID y texto son campos requeridos."));
       return;
@@ -72,8 +70,7 @@ const save = (req) => {
   });
 };
 
-const read = (req) => {
-  const { id } = req.params;
+const read = ({ id }) => {
 
   return fs.readFile('./json-documents/data.json', 'utf8')
     .then((jsonData) => {

@@ -6,6 +6,7 @@ import BtonAboutUs from './componentes/buttons/btonAboutUs';
 
 function App() {
 
+
 const [code, setCode] = useState(''); // create the hook for negotiate local data for code an then set when to use
 const [output, setOutput] = useState(''); // create the hook for output and set the data when to use
 const [consoleOutput, setConsoleOutput] = useState(''); // this hook realize the use for console to output and set when to use
@@ -58,8 +59,8 @@ const handleEval = (text) => {
 
 return (
   <div className="App">
-    <BtonAboutUs/>
 
+  <BtonAboutUs/>
   <div className='botones'> 
     <Button id = {inputId} setCodeData = {handleCodeChange} 
                           codeData = {code} outputData = {output} setOutputData = {handleOutputChange} 
@@ -68,8 +69,8 @@ return (
                           setWordCount = {handleWordCounChange} 
                           setLinesCountOutput = {handleLineCountOutputChange}  
                           setWordCountOutput = {handleWordCountOutputChange} 
-                          /></div>
-
+                          />
+      </div>
     <div className='StyleC'>
       <CodeEditor codeData = {code} setCode={handleCodeChange}  outputData={output} 
                 setConsoleOutput={handleOutputChange} inputData = {inputId} 

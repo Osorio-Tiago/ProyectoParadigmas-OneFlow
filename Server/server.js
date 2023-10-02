@@ -1,14 +1,30 @@
+
 const express = require('express')
 const crud = require('./crud/fs-crud.js')
 const bodyParser = require('body-parser');
-const app = express()
-const port = 3001
 const cors = require('cors')
+const path = require('path');
+
+const app = express()
+
+const port = process.env.PORT || 3001;
+
 const server = app.listen(port, () => console.log('Server working on port ' + port))
 
 app.use(bodyParser.json());
-
 app.use(cors())
+
+
+// serve up production assets
+app.use(express.static('../client/build'));
+
+// serve up the index.html if express does'nt recognize the route
+app.get('/', (req, res) => {
+res.sendFile(path.resolve(__dirname, '..','client', 'build', 'index.html'));
+});
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 app.get("/keywords", (req, res) => {
@@ -49,7 +65,7 @@ app.post('/eval', (req, res) =>{
 
 
   app.post('/script/save', (req, res) => {
-    crud.save(req)
+    crud.save({id, texto} = req.body)
       .then(() => {
         res.status(200).json({ message: 'Datos guardados correctamente' });
       })
@@ -59,7 +75,7 @@ app.post('/eval', (req, res) =>{
   });
 
   app.get('/script/:id', (req, res) => {
-    crud.read(req)
+    crud.read({id} = req.params)
       .then((script) => {
         script ? 
             res.status(200).json(script) : 

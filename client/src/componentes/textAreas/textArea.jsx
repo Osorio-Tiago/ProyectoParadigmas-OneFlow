@@ -29,10 +29,11 @@ function TextAreaWithLineCounter({text, setText, boolRead, clickFunction, keyDow
     background: '#0c3c4a'
   };
 
-  return (
-  <div style={{ display: 'flex' ,overflowY: 'scroll' }}>
+  return (     //Preguntar cuánto debería tener de maxHeight para el crecimiento del textarea
+  <div style={{width : '550px', maxHeight: '300px' , overflowY : 'scroll', overflowX : 'hidden'}}>
+  <div style={{ display: 'flex' ,overflowY: 'scroll', width : '550px'}}>
     <div style={lineCounterStyle}>
-      {lines.map((line, index) => (
+      {lines.map((_, index) => (
         <div key={index}
           style={{
           textAlign: 'right',
@@ -43,7 +44,7 @@ function TextAreaWithLineCounter({text, setText, boolRead, clickFunction, keyDow
         </div>
       ))}
     </div>
-    <div style={{ flex: '1', display: 'flex', flexDirection: 'column' }}>
+    <div style={{ flex: '1', display: 'flex', flexDirection: 'column', overflowX: 'hidden', overflowY: 'hidden'}}>
       <textarea 
        readOnly = {boolRead}
         fontSize="1rem"
@@ -60,14 +61,15 @@ function TextAreaWithLineCounter({text, setText, boolRead, clickFunction, keyDow
           border: 'none',
           outline: 'none',
           boxSizing: 'border-box',
-          whiteSpace: 'nowrap',
           overflowX: 'auto',
           overflowY: 'hidden',
           resize: 'none',
-          whiteSpace: 'pre-line'
+          whiteSpace: 'pre-line',
+          whiteSpace: 'nowrap'
         }}
       />
     </div>
+  </div>
   </div>
 );  
 }
