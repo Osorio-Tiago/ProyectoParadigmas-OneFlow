@@ -98,7 +98,7 @@ app.post('/eval', (req, res) =>{
   app.post('/testScripts', async (req, res) =>{
      try { 
          const script = await ScriptRepository.create(req.body)
-         res.sendStatus(200) 
+         res.json(script).send('script creado');
      }
      catch(error){
        res.sendStatus(500)
@@ -106,3 +106,17 @@ app.post('/eval', (req, res) =>{
      return 
 
   });
+
+  app.get('/testScripts/:id', async (req, res)=> {
+
+    try {
+      const found = await ScriptRepository.finById(req.params.id)
+      found==null ? res.sendStatus(204) : res.json(found).send();
+   }
+   catch(error){
+     res.sendStatus(500)
+   }
+   return  
+  });
+
+

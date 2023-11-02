@@ -14,9 +14,12 @@ async function findAll() {
     return Script.find({})
 }
 
-
+async function finById(ID){
+    return Script.findById(ID)
+}
 
 module.exports = {
     create,
     findAll,
+    finById
   };
