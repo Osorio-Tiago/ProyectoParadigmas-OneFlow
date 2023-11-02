@@ -1,6 +1,7 @@
 {
   "dependencies": {
+    "mongodb": "^6.2.0",
+    "mongoose": "^6.0.1",
     "react-autosuggest": "^10.1.0"
-    
   }
 }

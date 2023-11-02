@@ -4,6 +4,7 @@ const crud = require('./crud/fs-crud.js')
 const bodyParser = require('body-parser');
 const cors = require('cors')
 const path = require('path');
+const ScriptRepository = require('../Server/repositories/ScriptsRepository')
 
 const app = express()
 
@@ -84,4 +85,12 @@ app.post('/eval', (req, res) =>{
       .catch((err) => {
         res.status(500).json({ message: 'Error al leer el archivo JSON' });
       });
+  });
+
+
+  app.get('/scripts', async (req, res)=>{
+    const scripts = await ScriptRepository.findAll()
+    res.json(scripts).send();
+    return 
+
   });
