@@ -20,7 +20,7 @@ const CodeEditor = ({codeData, setCode, outputData, setConsoleOutput, inputData,
         return response.json();
       })
       .then((data) => {
-        keywords = data.palabrasReservadas; // Set keywords array with info returned by fetch from api
+        keywords = data; 
       })
       .catch((error) => {
         console.error(error);
@@ -37,7 +37,6 @@ const CodeEditor = ({codeData, setCode, outputData, setConsoleOutput, inputData,
   //we use to autocomplete keywords in the code editor.
 // If a keyword matches, its added to the code.
   const autoComplete = (word) => {
-
     console.log(word)
     const filteredWords = keywords.filter((keyword) => keyword.includes(word));
 
@@ -46,6 +45,7 @@ const CodeEditor = ({codeData, setCode, outputData, setConsoleOutput, inputData,
       setCode(newCode);
       setMatching_keywords([])
     }
+
   };
 
 
@@ -72,7 +72,7 @@ const CodeEditor = ({codeData, setCode, outputData, setConsoleOutput, inputData,
    //matching keywords for autocomplete.
   const handleChange = ({ target: { value, selectionStart } }) => {
     setCode(value);
-
+    console.log(keywords)
     const inputWord = obtenerUltimaPalabra(value) 
 
     // count words, lines, columns

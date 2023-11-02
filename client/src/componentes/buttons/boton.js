@@ -67,7 +67,7 @@ function Button({id, codeData ,setCodeData, outputData, setOutputData, setEval, 
       },
       body: JSON.stringify({
         'id': id,
-        'texto': codeData
+        'contenido': codeData
       })
     })
       .then(response => {

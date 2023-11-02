@@ -31,7 +31,8 @@ res.sendFile(path.resolve(__dirname, '..','client', 'build', 'index.html'));
 app.get("/keywords", (req, res) => {
   crud.readKeywords()
     .then((keywordsJson) => {
-      res.json(keywordsJson);
+      console.log(keywordsJson)
+      res.json(keywordsJson.map(e => e.name ))
     })
     .catch((error) => {
       res.status(500).json({ error: 'Error al leer las palabras clave' });
@@ -66,7 +67,7 @@ app.post('/eval', (req, res) =>{
 
 
   app.post('/script/save', (req, res) => {
-    crud.save({id, texto} = req.body)
+    crud.save({id, contenido} = req.body)
       .then(() => {
         res.status(200).json({ message: 'Datos guardados correctamente' });
       })
