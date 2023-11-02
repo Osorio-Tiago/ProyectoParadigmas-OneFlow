@@ -29,12 +29,12 @@ function Button({id, codeData ,setCodeData, outputData, setOutputData, setEval, 
         return response.json(); 
       })
       .then(loadedData => {
-        loadedData.texto = loadedData.texto.replace(/\\n/g, '\n');
-      setCodeData(loadedData.texto);
+        loadedData.contenido = loadedData.contenido.replace(/\\n/g, '\n');
+      setCodeData(loadedData.contenido);
       setData(loadedData.id)
 
-      const lines = loadedData.texto.split('\n').length;
-      const words = loadedData.texto.split(/\s+/).filter((word) => word !== '').length;
+      const lines = loadedData.contenido.split('\n').length;
+      const words = loadedData.contenido.split(/\s+/).filter((word) => word !== '').length;
   
       setLinesCount({target : {value : lines}})
       setWordCount({target : {value : words}});

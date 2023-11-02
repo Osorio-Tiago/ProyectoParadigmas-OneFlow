@@ -1,6 +1,6 @@
 
 const express = require('express')
-const crud = require('./crud/fs-crud.js')
+const bdCrud = require('./crud/bd-crud.js')
 const bodyParser = require('body-parser');
 const cors = require('cors')
 const path = require('path');
@@ -29,7 +29,7 @@ res.sendFile(path.resolve(__dirname, '..','client', 'build', 'index.html'));
 
 
 app.get("/keywords", (req, res) => {
-  crud.readKeywords()
+  bdCrud.readKeywords()
     .then((keywordsJson) => {
       console.log(keywordsJson)
       res.json(keywordsJson.map(e => e.name ))
@@ -37,11 +37,12 @@ app.get("/keywords", (req, res) => {
     .catch((error) => {
       res.status(500).json({ error: 'Error al leer las palabras clave' });
     });
+    return;
 });
 
 // GET METHOD RETURN ABOUT US INFO
 app.get('/about', (req, res) => {
-  crud.readAboutUs().then((aboutUs) =>
+  bdCrud.readAboutUs().then((aboutUs) =>
   res.json(aboutUs)).catch((err) => console.log(err))
 })
 
@@ -50,11 +51,12 @@ app.get('/about', (req, res) => {
 app.post('/compile', (req, res) =>{
     const timestampedText = `${new Date().toISOString()}: ${req.body.text}`; // Add timestamp to received text
     res.json({result : timestampedText}) // Returns json with timestamp + received text
+    return;
 })
 
 //  POST METHOD WE DON'T KNOW WHAT THIS HAVE TO DO 
 app.post('/eval', (req, res) =>{
-    crud.responseEval().then((script) =>{
+    bdCrud.responseEval().then((script) =>{
         script ? 
             res.status(200).json(script) : 
             res.status(404).json({ message: 'No se pudo evaluar la expresion' })
@@ -62,12 +64,13 @@ app.post('/eval', (req, res) =>{
       .catch((err) => {
         res.status(500).json({ message: 'Error interno del servidor' });
     })
+    return;
 })
 // LOAD AND SAVE SCRIPTS
 
 
   app.post('/script/save', (req, res) => {
-    crud.save({id, contenido} = req.body)
+    bdCrud.save({id, contenido} = req.body)
       .then(() => {
         res.status(200).json({ message: 'Datos guardados correctamente' });
       })
@@ -77,8 +80,10 @@ app.post('/eval', (req, res) =>{
   });
 
   app.get('/script/:id', (req, res) => {
-    crud.read({id} = req.params)
+    bdCrud.read({id} = req.params)
       .then((script) => {
+        console.log('Este es el ID '+id);
+        
         script ? 
             res.status(200).json(script) : 
             res.status(404).json({ message: 'No se encontró el script con el ID especificado' })
@@ -86,16 +91,23 @@ app.post('/eval', (req, res) =>{
       .catch((err) => {
         res.status(500).json({ message: 'Error al leer el archivo JSON' });
       });
+      
   });
 
 
-  app.get('/scripts', async (req, res)=>{
-    const scripts = await ScriptRepository.findAll()
-    res.json(scripts).send();
-    return 
 
+  app.get('/scripts', (req, res) => {
+    ScriptRepository.findAll()
+      .then(scripts => {
+        res.json(scripts);
+      })
+      .catch(error => {
+        console.error(error);
+        res.status(500).send('Error interno del servidor');
+      });
   });
-
+  
+//Es de prueba
   app.post('/testScripts', async (req, res) =>{
      try { 
          const script = await ScriptRepository.create(req.body)
