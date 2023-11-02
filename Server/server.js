@@ -94,3 +94,15 @@ app.post('/eval', (req, res) =>{
     return 
 
   });
+
+  app.post('/testScripts', async (req, res) =>{
+     try { 
+         const script = await ScriptRepository.create(req.body)
+         res.sendStatus(200) 
+     }
+     catch(error){
+       res.sendStatus(500)
+     }
+     return 
+
+  });

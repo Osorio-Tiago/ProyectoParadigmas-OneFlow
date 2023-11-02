@@ -4,7 +4,6 @@ const Schema = moongose.Schema()
 
 
 const ScriptSchema = new moongose.Schema({
-    fecha: { type: Date, default: Date.now },
     contenido: String
 });
 
