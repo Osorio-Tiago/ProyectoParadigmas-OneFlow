@@ -3,7 +3,7 @@ En esto proyecto para el curso Paradigmas de Programación en la Universidad Nac
 
 ## Pasos a seguir para levantar el proyecto desde cero
 
-Para instalar y correr el proyecto basta con abrir el archivo `run-project.bat` y eso ejecutará unos comandos automatizados para iniciar el proyecto.
+Para instalar y correr el proyecto basta con abrir el archivo `run-project.bat`, este ejecutará unos comandos automatizados para iniciar el proyecto.
 
 ## Herramientas Utilizadas
 
