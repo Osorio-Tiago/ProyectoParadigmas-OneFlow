@@ -7,7 +7,7 @@ function TextAreaWithLineCounter({text, setText, boolRead, clickFunction, keyDow
   // Función para dividir el texto en líneas
   const splitTextIntoLines = (text) => {
     //return codeDatas.split('\n');
-    if (text) {
+    if (text) {  
       return text.split('\n');
     } else {
       return [1];
@@ -46,7 +46,7 @@ function TextAreaWithLineCounter({text, setText, boolRead, clickFunction, keyDow
     </div>
     <div style={{ flex: '1', display: 'flex', flexDirection: 'column', overflowX: 'hidden', overflowY: 'hidden'}}>
       <textarea 
-       readOnly = {boolRead}
+       readOnly = {false}
         fontSize="1rem"
         value={text}
         onChange={setText}

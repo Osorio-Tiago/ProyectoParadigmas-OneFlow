@@ -1,0 +1,1 @@
+cd prolog-server && swipl simple_service_server.pl

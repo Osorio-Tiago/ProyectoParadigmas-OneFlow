@@ -1,0 +1,253 @@
+server(started, 1700712779).
+/*Wed Nov 22 22:12:59 2023*/ request(1, 1700712779.487, [peer(ip(127,0,0,1)),method(post),request_uri('/add'),path('/add'),http_version(1-1),content_type('application/json'),host(localhost),port(8000),connection('keep-alive'),transfer_encoding(chunked)]).
+completed(1, 0.03125, 370, 404, error(404,'/add')).
+/*Wed Nov 22 22:13:50 2023*/ request(2, 1700712830.721, [peer(ip(127,0,0,1)),method(post),request_uri('/transpile'),path('/transpile'),http_version(1-1),content_type('application/json'),host(localhost),port(8000),connection('keep-alive'),transfer_encoding(chunked)]).
+completed(2, 0.0, 484, 500, error("transpile/2: Unknown procedure: string_codes/3\n  However, there are definitions for:\n        string_codes/2\n        string_code/3")).
+server(stopped, 1700712970).
+server(started, 1700712980).
+/*Wed Nov 22 22:16:20 2023*/ request(1, 1700712980.044, [peer(ip(127,0,0,1)),method(post),request_uri('/transpile'),path('/transpile'),http_version(1-1),content_type('application/json'),host(localhost),port(8000),connection('keep-alive'),transfer_encoding(chunked)]).
+completed(1, 0.0, 422, 500, error("string_codes/2: Type error: `text' expected, found `_424{code:\"const x = 1\"}' (a dict)")).
+server(stopped, 1700713047).
+server(started, 1700713052).
+/*Wed Nov 22 22:17:31 2023*/ request(1, 1700713051.915, [peer(ip(127,0,0,1)),method(post),request_uri('/transpile'),path('/transpile'),http_version(1-1),content_type('application/json'),host(localhost),port(8000),connection('keep-alive'),transfer_encoding(chunked)]).
+completed(1, 0.0625, 379, 500, error("transpile/2: Unknown procedure: ofs_program/3")).
+server(stopped, 1700713195).
+server(started, 1700713229).
+/*Wed Nov 22 22:20:28 2023*/ request(1, 1700713228.858, [peer(ip(127,0,0,1)),method(post),request_uri('/transpile'),path('/transpile'),http_version(1-1),content_type('application/json'),host(localhost),port(8000),connection('keep-alive'),transfer_encoding(chunked)]).
+completed(1, 0.015625, 382, 500, error("transpile/2: Unknown procedure: eliminate_null/2")).
+server(stopped, 1700713268).
+server(started, 1700713274).
+/*Wed Nov 22 22:21:13 2023*/ request(1, 1700713273.627, [peer(ip(127,0,0,1)),method(post),request_uri('/transpile'),path('/transpile'),http_version(1-1),content_type('application/json'),host(localhost),port(8000),connection('keep-alive'),transfer_encoding(chunked)]).
+completed(1, 0.015625, 382, 500, error("handle_request/1: Unknown procedure: generator/2")).
+server(stopped, 1700713307).
+server(started, 1700713312).
+/*Wed Nov 22 22:21:51 2023*/ request(1, 1700713311.829, [peer(ip(127,0,0,1)),method(post),request_uri('/transpile'),path('/transpile'),http_version(1-1),content_type('application/json'),host(localhost),port(8000),connection('keep-alive'),transfer_encoding(chunked)]).
+completed(1, 0.04687500000000001, 387, 500, error("format/3: Illegal argument to format sequence ~s: 120")).
+server(stopped, 1700713436).
+server(started, 1700713441).
+/*Wed Nov 22 22:24:01 2023*/ request(1, 1700713441.500, [peer(ip(127,0,0,1)),method(post),request_uri('/transpile'),path('/transpile'),http_version(1-1),content_type('application/json'),host(localhost),port(8000),connection('keep-alive'),transfer_encoding(chunked)]).
+completed(1, 0.015625, 387, 500, error("format/3: Illegal argument to format sequence ~s: 120")).
+/*Wed Nov 22 22:32:11 2023*/ request(2, 1700713931.657, [peer(ip(127,0,0,1)),method(post),request_uri('/transpile'),path('/transpile'),http_version(1-1),content_type('application/json'),host(localhost),port(8000),connection('keep-alive'),transfer_encoding(chunked)]).
+completed(2, 0.0, 387, 500, error("format/3: Illegal argument to format sequence ~s: 120")).
+server(stopped, 1700714000).
+server(started, 1700714005).
+/*Wed Nov 22 22:33:25 2023*/ request(1, 1700714005.149, [peer(ip(127,0,0,1)),method(post),request_uri('/transpile'),path('/transpile'),http_version(1-1),content_type('application/json'),host(localhost),port(8000),connection('keep-alive'),transfer_encoding(chunked)]).
+completed(1, 0.015625, 410, 500, error("Type error: `json_term' expected, found `const(id(120),num(1))' (a compound)")).
+server(stopped, 1700714141).
+server(started, 1700714187).
+/*Wed Nov 22 22:36:27 2023*/ request(1, 1700714187.212, [peer(ip(127,0,0,1)),method(post),request_uri('/transpile'),path('/transpile'),http_version(1-1),content_type('application/json'),host(localhost),port(8000),connection('keep-alive'),transfer_encoding(chunked)]).
+completed(1, 0.015625, 56, 200, ok).
+completed(0, 0.0, 355, 400, error("Illegal HTTP request: 0 (in_http_request)")).
+/*Wed Nov 22 22:36:44 2023*/ request(2, 1700714204.588, [peer(ip(127,0,0,1)),method(post),request_uri('/transpile'),path('/transpile'),http_version(1-1),content_type('application/json'),host(localhost),port(8000),connection('keep-alive'),transfer_encoding(chunked)]).
+completed(2, 0.0, 387, 500, error("format/3: Illegal argument to format sequence ~s: 120")).
+server(stopped, 1700714232).
+server(started, 1700714237).
+/*Wed Nov 22 22:37:17 2023*/ request(1, 1700714237.477, [peer(ip(127,0,0,1)),method(post),request_uri('/transpile'),path('/transpile'),http_version(1-1),content_type('application/json'),host(localhost),port(8000),connection('keep-alive'),transfer_encoding(chunked)]).
+completed(1, 0.03125, 78, 200, ok).
+completed(0, 0.0, 355, 400, error("Illegal HTTP request: 0 (in_http_request)")).
+/*Wed Nov 22 22:38:22 2023*/ request(2, 1700714302.118, [peer(ip(127,0,0,1)),method(post),request_uri('/transpile'),path('/transpile'),http_version(1-1),content_type('application/json'),host(localhost),port(8000),connection('keep-alive'),transfer_encoding(chunked)]).
+completed(2, 0.0, 70, 200, ok).
+completed(0, 0.0, 355, 400, error("Illegal HTTP request: 0 (in_http_request)")).
+server(stopped, 1700714402).
+server(started, 1700714441).
+/*Wed Nov 22 22:40:41 2023*/ request(1, 1700714441.386, [peer(ip(127,0,0,1)),method(post),request_uri('/transpile'),path('/transpile'),http_version(1-1),content_type('application/json'),host(localhost),port(8000),connection('keep-alive'),transfer_encoding(chunked)]).
+completed(1, 0.0, 358, 500, error("Illegal HTTP parameter: ")).
+server(stopped, 1700714560).
+server(started, 1700714565).
+/*Wed Nov 22 22:42:45 2023*/ request(1, 1700714565.013, [peer(ip(127,0,0,1)),method(post),request_uri('/transpile'),path('/transpile'),http_version(1-1),content_type('application/json'),host(localhost),port(8000),connection('keep-alive'),transfer_encoding(chunked)]).
+completed(1, 0.0, 35, 200, ok).
+completed(0, 0.0, 355, 400, error("Illegal HTTP request: 0 (in_http_request)")).
+server(stopped, 1700714577).
+server(started, 1700715207).
+/*Wed Nov 22 22:53:26 2023*/ request(1, 1700715206.550, [peer(ip(127,0,0,1)),method(post),request_uri('/transpile'),path('/transpile'),http_version(1-1),content_type('application/json'),host(localhost),port(8000),connection('keep-alive'),transfer_encoding(chunked)]).
+completed(1, 0.03125, 757, 500, error("goal unexpectedly failed: user:handle_request([protocol(http),peer(ip(127,0,0,1)),pool(client('httpd@8000',user:http_dispatch,<stream>(000002536ff66190),<stream>(000002536ff676d0))),input(<stream>(000002536ff66190)),method(post),request_uri('/transpile'),path('/transpile'),http_version(1-1),content_type('application/json'),host(localhost),port(8000),connection('keep-alive'),transfer_encoding(chunked)])")).
+server(stopped, 1700715233).
+server(started, 1700715240).
+/*Wed Nov 22 22:54:00 2023*/ request(1, 1700715240.190, [peer(ip(127,0,0,1)),method(post),request_uri('/transpile'),path('/transpile'),http_version(1-1),content_type('application/json'),host(localhost),port(8000),connection('keep-alive'),transfer_encoding(chunked)]).
+completed(1, 0.015625, 757, 500, error("goal unexpectedly failed: user:handle_request([protocol(http),peer(ip(127,0,0,1)),pool(client('httpd@8000',user:http_dispatch,<stream>(000001674e01a570),<stream>(000001674e01bde0))),input(<stream>(000001674e01a570)),method(post),request_uri('/transpile'),path('/transpile'),http_version(1-1),content_type('application/json'),host(localhost),port(8000),connection('keep-alive'),transfer_encoding(chunked)])")).
+/*Wed Nov 22 22:54:08 2023*/ request(2, 1700715248.543, [peer(ip(127,0,0,1)),method(post),request_uri('/transpile'),path('/transpile'),http_version(1-1),content_type('application/json'),host(localhost),port(8000),connection('keep-alive'),transfer_encoding(chunked)]).
+completed(2, 0.0, 757, 500, error("goal unexpectedly failed: user:handle_request([protocol(http),peer(ip(127,0,0,1)),pool(client('httpd@8000',user:http_dispatch,<stream>(000001674e01aac0),<stream>(000001674e018480))),input(<stream>(000001674e01aac0)),method(post),request_uri('/transpile'),path('/transpile'),http_version(1-1),content_type('application/json'),host(localhost),port(8000),connection('keep-alive'),transfer_encoding(chunked)])")).
+/*Wed Nov 22 22:54:41 2023*/ request(3, 1700715281.076, [peer(ip(127,0,0,1)),method(post),request_uri('/transpile'),path('/transpile'),http_version(1-1),content_type('application/json'),host(localhost),port(8000),connection('keep-alive'),transfer_encoding(chunked)]).
+completed(3, 0.0, 22, 200, ok).
+completed(0, 0.0, 355, 400, error("Illegal HTTP request: 0 (in_http_request)")).
+/*Wed Nov 22 22:54:46 2023*/ request(4, 1700715286.118, [peer(ip(127,0,0,1)),method(post),request_uri('/transpile'),path('/transpile'),http_version(1-1),content_type('application/json'),host(localhost),port(8000),connection('keep-alive'),transfer_encoding(chunked)]).
+completed(4, 0.0, 22, 200, ok).
+completed(0, 0.0, 355, 400, error("Illegal HTTP request: 0 (in_http_request)")).
+/*Wed Nov 22 22:54:52 2023*/ request(5, 1700715292.988, [peer(ip(127,0,0,1)),method(post),request_uri('/transpile'),path('/transpile'),http_version(1-1),content_type('application/json'),host(localhost),port(8000),connection('keep-alive'),transfer_encoding(chunked)]).
+completed(5, 0.0, 56, 200, ok).
+completed(0, 0.0, 355, 400, error("Illegal HTTP request: 0 (in_http_request)")).
+/*Wed Nov 22 23:01:03 2023*/ request(6, 1700715663.921, [peer(ip(127,0,0,1)),method(post),request_uri('/transpile'),path('/transpile'),http_version(1-1),content_type('application/json'),host(localhost),port(8000),connection('keep-alive'),transfer_encoding(chunked)]).
+completed(6, 0.0, 757, 500, error("goal unexpectedly failed: user:handle_request([protocol(http),peer(ip(127,0,0,1)),pool(client('httpd@8000',user:http_dispatch,<stream>(000001674dd12120),<stream>(000001674dd12890))),input(<stream>(000001674dd12120)),method(post),request_uri('/transpile'),path('/transpile'),http_version(1-1),content_type('application/json'),host(localhost),port(8000),connection('keep-alive'),transfer_encoding(chunked)])")).
+/*Wed Nov 22 23:01:45 2023*/ request(7, 1700715705.901, [peer(ip(127,0,0,1)),method(post),request_uri('/transpile'),path('/transpile'),http_version(1-1),content_type('application/json'),host(localhost),port(8000),connection('keep-alive'),transfer_encoding(chunked)]).
+completed(7, 0.0, 757, 500, error("goal unexpectedly failed: user:handle_request([protocol(http),peer(ip(127,0,0,1)),pool(client('httpd@8000',user:http_dispatch,<stream>(000001674dc99380),<stream>(000001674dc9b9c0))),input(<stream>(000001674dc99380)),method(post),request_uri('/transpile'),path('/transpile'),http_version(1-1),content_type('application/json'),host(localhost),port(8000),connection('keep-alive'),transfer_encoding(chunked)])")).
+/*Wed Nov 22 23:01:52 2023*/ request(8, 1700715712.817, [peer(ip(127,0,0,1)),method(post),request_uri('/transpile'),path('/transpile'),http_version(1-1),content_type('application/json'),host(localhost),port(8000),connection('keep-alive'),transfer_encoding(chunked)]).
+completed(8, 0.0, 757, 500, error("goal unexpectedly failed: user:handle_request([protocol(http),peer(ip(127,0,0,1)),pool(client('httpd@8000',user:http_dispatch,<stream>(000001674dc989f0),<stream>(000001674dc98b00))),input(<stream>(000001674dc989f0)),method(post),request_uri('/transpile'),path('/transpile'),http_version(1-1),content_type('application/json'),host(localhost),port(8000),connection('keep-alive'),transfer_encoding(chunked)])")).
+/*Wed Nov 22 23:01:55 2023*/ request(9, 1700715715.546, [peer(ip(127,0,0,1)),method(post),request_uri('/transpile'),path('/transpile'),http_version(1-1),content_type('application/json'),host(localhost),port(8000),connection('keep-alive'),transfer_encoding(chunked)]).
+completed(9, 0.0, 757, 500, error("goal unexpectedly failed: user:handle_request([protocol(http),peer(ip(127,0,0,1)),pool(client('httpd@8000',user:http_dispatch,<stream>(000001674bc05f40),<stream>(000001674df45ea0))),input(<stream>(000001674bc05f40)),method(post),request_uri('/transpile'),path('/transpile'),http_version(1-1),content_type('application/json'),host(localhost),port(8000),connection('keep-alive'),transfer_encoding(chunked)])")).
+/*Wed Nov 22 23:01:59 2023*/ request(10, 1700715719.027, [peer(ip(127,0,0,1)),method(post),request_uri('/transpile'),path('/transpile'),http_version(1-1),content_type('application/json'),host(localhost),port(8000),connection('keep-alive'),transfer_encoding(chunked)]).
+completed(10, 0.0, 757, 500, error("goal unexpectedly failed: user:handle_request([protocol(http),peer(ip(127,0,0,1)),pool(client('httpd@8000',user:http_dispatch,<stream>(000001674df47a40),<stream>(000001674df470b0))),input(<stream>(000001674df47a40)),method(post),request_uri('/transpile'),path('/transpile'),http_version(1-1),content_type('application/json'),host(localhost),port(8000),connection('keep-alive'),transfer_encoding(chunked)])")).
+server(stopped, 1700715746).
+server(started, 1700715754).
+/*Wed Nov 22 23:02:34 2023*/ request(1, 1700715754.371, [peer(ip(127,0,0,1)),method(post),request_uri('/transpile'),path('/transpile'),http_version(1-1),content_type('application/json'),host(localhost),port(8000),connection('keep-alive'),transfer_encoding(chunked)]).
+completed(1, 0.0, 56, 200, ok).
+completed(0, 0.0, 355, 400, error("Illegal HTTP request: 0 (in_http_request)")).
+/*Wed Nov 22 23:02:43 2023*/ request(2, 1700715763.948, [peer(ip(127,0,0,1)),method(post),request_uri('/transpile'),path('/transpile'),http_version(1-1),content_type('application/json'),host(localhost),port(8000),connection('keep-alive'),transfer_encoding(chunked)]).
+completed(2, 0.0, 56, 200, ok).
+completed(0, 0.0, 355, 400, error("Illegal HTTP request: 0 (in_http_request)")).
+/*Wed Nov 22 23:06:30 2023*/ request(3, 1700715990.050, [peer(ip(127,0,0,1)),method(post),request_uri('/transpile'),path('/transpile'),http_version(1-1),content_type('application/json'),host(localhost),port(8000),connection('keep-alive'),transfer_encoding(chunked)]).
+completed(3, 0.0, 56, 200, ok).
+completed(0, 0.0, 355, 400, error("Illegal HTTP request: 0 (in_http_request)")).
+/*Wed Nov 22 23:06:40 2023*/ request(4, 1700716000.128, [peer(ip(127,0,0,1)),method(post),request_uri('/transpile'),path('/transpile'),http_version(1-1),content_type('application/json'),host(localhost),port(8000),connection('keep-alive'),transfer_encoding(chunked)]).
+completed(4, 0.0, 78, 200, ok).
+completed(0, 0.0, 355, 400, error("Illegal HTTP request: 0 (in_http_request)")).
+/*Wed Nov 22 23:07:35 2023*/ request(5, 1700716055.660, [peer(ip(127,0,0,1)),method(post),request_uri('/transpile'),path('/transpile'),http_version(1-1),content_type('application/json'),host(localhost),port(8000),connection('keep-alive'),transfer_encoding(chunked)]).
+completed(5, 0.0, 56, 200, ok).
+completed(0, 0.0, 355, 400, error("Illegal HTTP request: 0 (in_http_request)")).
+/*Wed Nov 22 23:07:43 2023*/ request(6, 1700716063.556, [peer(ip(127,0,0,1)),method(post),request_uri('/transpile'),path('/transpile'),http_version(1-1),content_type('application/json'),host(localhost),port(8000),connection('keep-alive'),transfer_encoding(chunked)]).
+completed(6, 0.0, 78, 200, ok).
+completed(0, 0.0, 355, 400, error("Illegal HTTP request: 0 (in_http_request)")).
+/*Wed Nov 22 23:10:43 2023*/ request(7, 1700716243.840, [peer(ip(127,0,0,1)),method(post),request_uri('/transpile'),path('/transpile'),http_version(1-1),content_type('application/json'),host(localhost),port(8000),connection('keep-alive'),transfer_encoding(chunked)]).
+completed(7, 0.0, 78, 200, ok).
+completed(0, 0.0, 355, 400, error("Illegal HTTP request: 0 (in_http_request)")).
+/*Wed Nov 22 23:11:03 2023*/ request(8, 1700716263.256, [peer(ip(127,0,0,1)),method(post),request_uri('/transpile'),path('/transpile'),http_version(1-1),content_type('application/json'),host(localhost),port(8000),connection('keep-alive'),transfer_encoding(chunked)]).
+completed(8, 0.0, 56, 200, ok).
+completed(0, 0.0, 355, 400, error("Illegal HTTP request: 0 (in_http_request)")).
+/*Wed Nov 22 23:12:09 2023*/ request(9, 1700716329.749, [peer(ip(127,0,0,1)),method(post),request_uri('/transpile'),path('/transpile'),http_version(1-1),content_type('application/json'),host(localhost),port(8000),connection('keep-alive'),transfer_encoding(chunked)]).
+completed(9, 0.0, 56, 200, ok).
+completed(0, 0.0, 355, 400, error("Illegal HTTP request: 0 (in_http_request)")).
+/*Wed Nov 22 23:13:00 2023*/ request(10, 1700716380.123, [peer(ip(127,0,0,1)),method(post),request_uri('/transpile'),path('/transpile'),http_version(1-1),content_type('application/json'),host(localhost),port(8000),connection('keep-alive'),transfer_encoding(chunked)]).
+completed(10, 0.0, 56, 200, ok).
+completed(0, 0.0, 355, 400, error("Illegal HTTP request: 0 (in_http_request)")).
+/*Wed Nov 22 23:13:01 2023*/ request(11, 1700716381.894, [peer(ip(127,0,0,1)),method(post),request_uri('/transpile'),path('/transpile'),http_version(1-1),content_type('application/json'),host(localhost),port(8000),connection('keep-alive'),transfer_encoding(chunked)]).
+completed(11, 0.0, 56, 200, ok).
+completed(0, 0.0, 355, 400, error("Illegal HTTP request: 0 (in_http_request)")).
+/*Wed Nov 22 23:13:06 2023*/ request(12, 1700716386.170, [peer(ip(127,0,0,1)),method(post),request_uri('/transpile'),path('/transpile'),http_version(1-1),content_type('application/json'),host(localhost),port(8000),connection('keep-alive'),transfer_encoding(chunked)]).
+completed(12, 0.0, 56, 200, ok).
+completed(0, 0.0, 355, 400, error("Illegal HTTP request: 0 (in_http_request)")).
+/*Wed Nov 22 23:13:08 2023*/ request(13, 1700716388.579, [peer(ip(127,0,0,1)),method(post),request_uri('/transpile'),path('/transpile'),http_version(1-1),content_type('application/json'),host(localhost),port(8000),connection('keep-alive'),transfer_encoding(chunked)]).
+completed(13, 0.0, 56, 200, ok).
+completed(0, 0.0, 355, 400, error("Illegal HTTP request: 0 (in_http_request)")).
+/*Wed Nov 22 23:13:29 2023*/ request(14, 1700716409.979, [peer(ip(127,0,0,1)),method(post),request_uri('/transpile'),path('/transpile'),http_version(1-1),content_type('application/json'),host(localhost),port(8000),connection('keep-alive'),transfer_encoding(chunked)]).
+completed(14, 0.0, 56, 200, ok).
+completed(0, 0.0, 355, 400, error("Illegal HTTP request: 0 (in_http_request)")).
+/*Wed Nov 22 23:14:58 2023*/ request(15, 1700716498.447, [peer(ip(127,0,0,1)),method(post),request_uri('/transpile'),path('/transpile'),http_version(1-1),content_type('application/json'),host(localhost),port(8000),connection('keep-alive'),transfer_encoding(chunked)]).
+completed(15, 0.0, 56, 200, ok).
+completed(0, 0.0, 355, 400, error("Illegal HTTP request: 0 (in_http_request)")).
+/*Wed Nov 22 23:18:32 2023*/ request(16, 1700716712.630, [peer(ip(127,0,0,1)),method(post),request_uri('/transpile'),path('/transpile'),http_version(1-1),content_type('application/json'),host(localhost),port(8000),connection('keep-alive'),transfer_encoding(chunked)]).
+completed(16, 0.0, 56, 200, ok).
+completed(0, 0.0, 355, 400, error("Illegal HTTP request: 0 (in_http_request)")).
+/*Wed Nov 22 23:19:04 2023*/ request(17, 1700716744.076, [peer(ip(127,0,0,1)),method(post),request_uri('/transpile'),path('/transpile'),http_version(1-1),content_type('application/json'),host(localhost),port(8000),connection('keep-alive'),transfer_encoding(chunked)]).
+completed(17, 0.0, 56, 200, ok).
+completed(0, 0.0, 355, 400, error("Illegal HTTP request: 0 (in_http_request)")).
+/*Wed Nov 22 23:20:49 2023*/ request(18, 1700716849.981, [peer(ip(127,0,0,1)),method(post),request_uri('/transpile'),path('/transpile'),http_version(1-1),content_type('application/json'),host(localhost),port(8000),connection('keep-alive'),transfer_encoding(chunked)]).
+completed(18, 0.0, 56, 200, ok).
+completed(0, 0.0, 355, 400, error("Illegal HTTP request: 0 (in_http_request)")).
+/*Wed Nov 22 23:21:18 2023*/ request(19, 1700716878.650, [peer(ip(127,0,0,1)),method(post),request_uri('/transpile'),path('/transpile'),http_version(1-1),content_type('application/json'),host(localhost),port(8000),connection('keep-alive'),transfer_encoding(chunked)]).
+completed(19, 0.0, 56, 200, ok).
+completed(0, 0.0, 355, 400, error("Illegal HTTP request: 0 (in_http_request)")).
+/*Wed Nov 22 23:22:14 2023*/ request(20, 1700716934.786, [peer(ip(127,0,0,1)),method(post),request_uri('/transpile'),path('/transpile'),http_version(1-1),content_type('application/json'),host(localhost),port(8000),connection('keep-alive'),transfer_encoding(chunked)]).
+completed(20, 0.0, 56, 200, ok).
+completed(0, 0.0, 355, 400, error("Illegal HTTP request: 0 (in_http_request)")).
+/*Wed Nov 22 23:25:13 2023*/ request(21, 1700717113.796, [peer(ip(127,0,0,1)),method(post),request_uri('/transpile'),path('/transpile'),http_version(1-1),content_type('application/json'),host(localhost),port(8000),connection('keep-alive'),transfer_encoding(chunked)]).
+completed(21, 0.0, 56, 200, ok).
+completed(0, 0.0, 355, 400, error("Illegal HTTP request: 0 (in_http_request)")).
+/*Wed Nov 22 23:25:31 2023*/ request(22, 1700717131.651, [peer(ip(127,0,0,1)),method(post),request_uri('/transpile'),path('/transpile'),http_version(1-1),content_type('application/json'),host(localhost),port(8000),connection('keep-alive'),transfer_encoding(chunked)]).
+completed(22, 0.0, 78, 200, ok).
+completed(0, 0.0, 355, 400, error("Illegal HTTP request: 0 (in_http_request)")).
+/*Wed Nov 22 23:28:20 2023*/ request(23, 1700717300.790, [peer(ip(127,0,0,1)),method(post),request_uri('/transpile'),path('/transpile'),http_version(1-1),content_type('application/json'),host(localhost),port(8000),connection('keep-alive'),transfer_encoding(chunked)]).
+completed(23, 0.0, 78, 200, ok).
+completed(0, 0.0, 355, 400, error("Illegal HTTP request: 0 (in_http_request)")).
+/*Wed Nov 22 23:30:28 2023*/ request(24, 1700717428.275, [peer(ip(127,0,0,1)),method(post),request_uri('/transpile'),path('/transpile'),http_version(1-1),content_type('application/json'),host(localhost),port(8000),connection('keep-alive'),transfer_encoding(chunked)]).
+completed(24, 0.0, 56, 200, ok).
+completed(0, 0.0, 355, 400, error("Illegal HTTP request: 0 (in_http_request)")).
+/*Wed Nov 22 23:31:16 2023*/ request(25, 1700717476.970, [peer(ip(127,0,0,1)),method(post),request_uri('/transpile'),path('/transpile'),http_version(1-1),content_type('application/json'),host(localhost),port(8000),connection('keep-alive'),transfer_encoding(chunked)]).
+completed(25, 0.0, 56, 200, ok).
+completed(0, 0.0, 355, 400, error("Illegal HTTP request: 0 (in_http_request)")).
+/*Wed Nov 22 23:33:18 2023*/ request(26, 1700717598.109, [peer(ip(127,0,0,1)),method(post),request_uri('/transpile'),path('/transpile'),http_version(1-1),content_type('application/json'),host(localhost),port(8000),connection('keep-alive'),transfer_encoding(chunked)]).
+completed(26, 0.0, 56, 200, ok).
+completed(0, 0.0, 355, 400, error("Illegal HTTP request: 0 (in_http_request)")).
+/*Wed Nov 22 23:35:58 2023*/ request(27, 1700717758.490, [peer(ip(127,0,0,1)),method(post),request_uri('/transpile'),path('/transpile'),http_version(1-1),content_type('application/json'),host(localhost),port(8000),connection('keep-alive'),transfer_encoding(chunked)]).
+completed(27, 0.0, 56, 200, ok).
+completed(0, 0.0, 355, 400, error("Illegal HTTP request: 0 (in_http_request)")).
+/*Wed Nov 22 23:37:18 2023*/ request(28, 1700717838.839, [peer(ip(127,0,0,1)),method(post),request_uri('/transpile'),path('/transpile'),http_version(1-1),content_type('application/json'),host(localhost),port(8000),connection('keep-alive'),transfer_encoding(chunked)]).
+completed(28, 0.0, 56, 200, ok).
+completed(0, 0.0, 355, 400, error("Illegal HTTP request: 0 (in_http_request)")).
+/*Wed Nov 22 23:37:20 2023*/ request(29, 1700717840.356, [peer(ip(127,0,0,1)),method(post),request_uri('/transpile'),path('/transpile'),http_version(1-1),content_type('application/json'),host(localhost),port(8000),connection('keep-alive'),transfer_encoding(chunked)]).
+completed(29, 0.0, 56, 200, ok).
+completed(0, 0.0, 355, 400, error("Illegal HTTP request: 0 (in_http_request)")).
+/*Wed Nov 22 23:37:51 2023*/ request(30, 1700717871.409, [peer(ip(127,0,0,1)),method(post),request_uri('/transpile'),path('/transpile'),http_version(1-1),content_type('application/json'),host(localhost),port(8000),connection('keep-alive'),transfer_encoding(chunked)]).
+completed(30, 0.0, 56, 200, ok).
+completed(0, 0.0, 355, 400, error("Illegal HTTP request: 0 (in_http_request)")).
+/*Wed Nov 22 23:38:06 2023*/ request(31, 1700717886.240, [peer(ip(127,0,0,1)),method(post),request_uri('/transpile'),path('/transpile'),http_version(1-1),content_type('application/json'),host(localhost),port(8000),connection('keep-alive'),transfer_encoding(chunked)]).
+completed(31, 0.0, 56, 200, ok).
+completed(0, 0.0, 355, 400, error("Illegal HTTP request: 0 (in_http_request)")).
+/*Wed Nov 22 23:38:07 2023*/ request(32, 1700717887.873, [peer(ip(127,0,0,1)),method(post),request_uri('/transpile'),path('/transpile'),http_version(1-1),content_type('application/json'),host(localhost),port(8000),connection('keep-alive'),transfer_encoding(chunked)]).
+completed(32, 0.0, 56, 200, ok).
+completed(0, 0.0, 355, 400, error("Illegal HTTP request: 0 (in_http_request)")).
+/*Wed Nov 22 23:38:48 2023*/ request(33, 1700717928.817, [peer(ip(127,0,0,1)),method(post),request_uri('/transpile'),path('/transpile'),http_version(1-1),content_type('application/json'),host(localhost),port(8000),connection('keep-alive'),transfer_encoding(chunked)]).
+completed(33, 0.0, 56, 200, ok).
+completed(0, 0.0, 355, 400, error("Illegal HTTP request: 0 (in_http_request)")).
+/*Wed Nov 22 23:40:52 2023*/ request(34, 1700718052.994, [peer(ip(127,0,0,1)),method(post),request_uri('/transpile'),path('/transpile'),http_version(1-1),content_type('application/json'),host(localhost),port(8000),connection('keep-alive'),transfer_encoding(chunked)]).
+completed(34, 0.0, 56, 200, ok).
+completed(0, 0.0, 355, 400, error("Illegal HTTP request: 0 (in_http_request)")).
+/*Wed Nov 22 23:43:56 2023*/ request(35, 1700718236.163, [peer(ip(127,0,0,1)),method(post),request_uri('/transpile'),path('/transpile'),http_version(1-1),content_type('application/json'),host(localhost),port(8000),connection('keep-alive'),transfer_encoding(chunked)]).
+completed(35, 0.0, 78, 200, ok).
+completed(0, 0.0, 355, 400, error("Illegal HTTP request: 0 (in_http_request)")).
+/*Wed Nov 22 23:45:41 2023*/ request(36, 1700718341.461, [peer(ip(127,0,0,1)),method(post),request_uri('/transpile'),path('/transpile'),http_version(1-1),content_type('application/json'),host(localhost),port(8000),connection('keep-alive'),transfer_encoding(chunked)]).
+completed(36, 0.0, 56, 200, ok).
+completed(0, 0.0, 355, 400, error("Illegal HTTP request: 0 (in_http_request)")).
+/*Wed Nov 22 23:46:23 2023*/ request(37, 1700718383.617, [peer(ip(127,0,0,1)),method(post),request_uri('/transpile'),path('/transpile'),http_version(1-1),content_type('application/json'),host(localhost),port(8000),connection('keep-alive'),transfer_encoding(chunked)]).
+completed(37, 0.0, 78, 200, ok).
+completed(0, 0.0, 355, 400, error("Illegal HTTP request: 0 (in_http_request)")).
+/*Wed Nov 22 23:48:58 2023*/ request(38, 1700718538.878, [peer(ip(127,0,0,1)),method(post),request_uri('/transpile'),path('/transpile'),http_version(1-1),content_type('application/json'),host(localhost),port(8000),connection('keep-alive'),transfer_encoding(chunked)]).
+completed(38, 0.0, 56, 200, ok).
+completed(0, 0.015625, 355, 400, error("Illegal HTTP request: 0 (in_http_request)")).
+/*Wed Nov 22 23:58:06 2023*/ request(39, 1700719086.799, [peer(ip(127,0,0,1)),method(post),request_uri('/transpile'),path('/transpile'),http_version(1-1),content_type('application/json'),host(localhost),port(8000),connection('keep-alive'),transfer_encoding(chunked)]).
+completed(39, 0.0, 22, 200, ok).
+completed(0, 0.0, 355, 400, error("Illegal HTTP request: 0 (in_http_request)")).
+/*Wed Nov 22 23:58:26 2023*/ request(40, 1700719106.320, [peer(ip(127,0,0,1)),method(post),request_uri('/transpile'),path('/transpile'),http_version(1-1),content_type('application/json'),host(localhost),port(8000),connection('keep-alive'),transfer_encoding(chunked)]).
+completed(40, 0.0, 56, 200, ok).
+completed(0, 0.0, 355, 400, error("Illegal HTTP request: 0 (in_http_request)")).
+/*Wed Nov 22 23:58:30 2023*/ request(41, 1700719110.370, [peer(ip(127,0,0,1)),method(post),request_uri('/transpile'),path('/transpile'),http_version(1-1),content_type('application/json'),host(localhost),port(8000),connection('keep-alive'),transfer_encoding(chunked)]).
+completed(41, 0.0, 56, 200, ok).
+completed(0, 0.0, 355, 400, error("Illegal HTTP request: 0 (in_http_request)")).
+/*Wed Nov 22 23:58:44 2023*/ request(42, 1700719124.745, [peer(ip(127,0,0,1)),method(post),request_uri('/transpile'),path('/transpile'),http_version(1-1),content_type('application/json'),host(localhost),port(8000),connection('keep-alive'),transfer_encoding(chunked)]).
+completed(42, 0.0, 56, 200, ok).
+completed(0, 0.0, 355, 400, error("Illegal HTTP request: 0 (in_http_request)")).
+/*Wed Nov 22 23:59:44 2023*/ request(43, 1700719184.558, [peer(ip(127,0,0,1)),method(post),request_uri('/transpile'),path('/transpile'),http_version(1-1),content_type('application/json'),host(localhost),port(8000),connection('keep-alive'),transfer_encoding(chunked)]).
+completed(43, 0.0, 56, 200, ok).
+completed(0, 0.0, 355, 400, error("Illegal HTTP request: 0 (in_http_request)")).
+/*Thu Nov 23 00:06:48 2023*/ request(44, 1700719608.275, [peer(ip(127,0,0,1)),method(post),request_uri('/transpile'),path('/transpile'),http_version(1-1),content_type('application/json'),host(localhost),port(8000),connection('keep-alive'),transfer_encoding(chunked)]).
+completed(44, 0.0, 56, 200, ok).
+completed(0, 0.0, 355, 400, error("Illegal HTTP request: 0 (in_http_request)")).
+/*Thu Nov 23 00:10:21 2023*/ request(45, 1700719821.020, [peer(ip(127,0,0,1)),method(post),request_uri('/transpile'),path('/transpile'),http_version(1-1),content_type('application/json'),host(localhost),port(8000),connection('keep-alive'),transfer_encoding(chunked)]).
+completed(45, 0.015625, 56, 200, ok).
+completed(0, 0.0, 355, 400, error("Illegal HTTP request: 0 (in_http_request)")).
+/*Thu Nov 23 00:11:40 2023*/ request(46, 1700719900.813, [peer(ip(127,0,0,1)),method(post),request_uri('/transpile'),path('/transpile'),http_version(1-1),content_type('application/json'),host(localhost),port(8000),connection('keep-alive'),transfer_encoding(chunked)]).
+completed(46, 0.0, 56, 200, ok).
+completed(0, 0.0, 355, 400, error("Illegal HTTP request: 0 (in_http_request)")).
+/*Thu Nov 23 00:16:46 2023*/ request(47, 1700720206.613, [peer(ip(127,0,0,1)),method(post),request_uri('/transpile'),path('/transpile'),http_version(1-1),content_type('application/json'),host(localhost),port(8000),connection('keep-alive'),transfer_encoding(chunked)]).
+completed(47, 0.0, 56, 200, ok).
+completed(0, 0.0, 355, 400, error("Illegal HTTP request: 0 (in_http_request)")).
+/*Thu Nov 23 00:17:29 2023*/ request(48, 1700720249.973, [peer(ip(127,0,0,1)),method(post),request_uri('/transpile'),path('/transpile'),http_version(1-1),content_type('application/json'),host(localhost),port(8000),connection('keep-alive'),transfer_encoding(chunked)]).
+completed(48, 0.0, 56, 200, ok).
+completed(0, 0.0, 355, 400, error("Illegal HTTP request: 0 (in_http_request)")).
+/*Thu Nov 23 00:18:54 2023*/ request(49, 1700720334.500, [peer(ip(127,0,0,1)),method(post),request_uri('/transpile'),path('/transpile'),http_version(1-1),content_type('application/json'),host(localhost),port(8000),connection('keep-alive'),transfer_encoding(chunked)]).
+completed(49, 0.0, 56, 200, ok).
+completed(0, 0.0, 355, 400, error("Illegal HTTP request: 0 (in_http_request)")).
+/*Thu Nov 23 00:19:02 2023*/ request(50, 1700720342.618, [peer(ip(127,0,0,1)),method(post),request_uri('/transpile'),path('/transpile'),http_version(1-1),content_type('application/json'),host(localhost),port(8000),connection('keep-alive'),transfer_encoding(chunked)]).
+completed(50, 0.0, 78, 200, ok).
+completed(0, 0.0, 355, 400, error("Illegal HTTP request: 0 (in_http_request)")).
+/*Thu Nov 23 00:19:47 2023*/ request(51, 1700720387.949, [peer(ip(127,0,0,1)),method(post),request_uri('/transpile'),path('/transpile'),http_version(1-1),content_type('application/json'),host(localhost),port(8000),connection('keep-alive'),transfer_encoding(chunked)]).
+completed(51, 0.0, 78, 200, ok).
+completed(0, 0.0, 355, 400, error("Illegal HTTP request: 0 (in_http_request)")).
+/*Thu Nov 23 00:22:15 2023*/ request(52, 1700720535.480, [peer(ip(127,0,0,1)),method(post),request_uri('/transpile'),path('/transpile'),http_version(1-1),content_type('application/json'),host(localhost),port(8000),connection('keep-alive'),transfer_encoding(chunked)]).
+completed(52, 0.0, 22, 200, ok).
+completed(0, 0.0, 355, 400, error("Illegal HTTP request: 0 (in_http_request)")).
+/*Thu Nov 23 00:22:23 2023*/ request(53, 1700720543.670, [peer(ip(127,0,0,1)),method(post),request_uri('/transpile'),path('/transpile'),http_version(1-1),content_type('application/json'),host(localhost),port(8000),connection('keep-alive'),transfer_encoding(chunked)]).
+completed(53, 0.0, 78, 200, ok).
+completed(0, 0.0, 355, 400, error("Illegal HTTP request: 0 (in_http_request)")).
+server(started, 1700722559).
+/*Thu Nov 23 00:55:59 2023*/ request(1, 1700722559.017, [peer(ip(127,0,0,1)),method(post),request_uri('/transpile'),path('/transpile'),http_version(1-1),content_type('application/json'),host(localhost),port(8000),connection('keep-alive'),transfer_encoding(chunked)]).
+completed(1, 0.0, 56, 200, ok).
+completed(0, 0.0, 355, 400, error("Illegal HTTP request: 0 (in_http_request)")).

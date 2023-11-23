@@ -91,46 +91,46 @@ function Button({id, codeData ,setCodeData, outputData, setOutputData, setEval, 
 //Compilation function. If codeData is not empty
 //then make an HTTP POST request to compile the code given in codeData
 
-  const handleCompiler = () => {
+const handleCompiler = () => {
+  if (!codeData) {
+    setErrorMsg('Se debe completar el campo para compilar archivo');
+    setHidden(false);
+  } else {
+    setHidden(true);
+    setErrorMsg('');
 
-    if(!codeData){
-      setErrorMsg('Se debe completar el campo para compilar archivo')
-      setHidden(false)
-    }
-    else{
-      setHidden(true)
-      setErrorMsg('')
-
-      fetch(`${API_SERVER_URL}/compile`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ text: codeData })
+    fetch(`${API_SERVER_URL}/compile`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ text: codeData }),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
       })
-        .then(response => {
-          if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-          }
-          return response.json();
-        })
-        .then(compilationResult => {
-          compilationResult.result = compilationResult.result.replace(/\n/g, '\r\n');
-          setOutputData(compilationResult.result);
+      .then((compilationResult) => {
+        // Eliminar comillas y ajustar saltos de línea
+        const resultWithoutQuotes = compilationResult.result.replace(/["']/g, '');
+        const resultWithLineBreaks = resultWithoutQuotes.replace(/\\n/g, '\n');
 
-          const lines = compilationResult.result.split('\n').length;
-          const words = compilationResult.result.split(/\s+/).filter((word) => word !== '').length;
-      
-          setLinesCountOutput({target : {value : lines}})
-          setWordCountOutput({target : {value : words}});
-        })
-        .catch(error => {
-          console.error("Error al compilar:", error);
-        });
-    };
-    
-}
- 
+        setOutputData(resultWithLineBreaks);
+
+        const lines = resultWithLineBreaks.split('\n').length;
+        const words = resultWithLineBreaks.split(/\s+/).filter((word) => word !== '').length;
+
+        setLinesCountOutput({ target: { value: lines } });
+        setWordCountOutput({ target: { value: words } });
+      })
+      .catch((error) => {
+        console.error('Error al compilar:', error);
+      });
+  }
+};
+
 //Eval function this have a POST 
 //request to the server for execute the code
   const handleEval = () => {
@@ -156,11 +156,12 @@ function Button({id, codeData ,setCodeData, outputData, setOutputData, setEval, 
         return response.json();
       })
       .then(evalResult => {
-        console.log(evalResult)
-        setEval(evalResult);
+        console.log(evalResult.message)
+        evalResult.message == undefined ? 
+        setEval('undefined') : setEval(evalResult.message)
       })
       .catch(error => {
-        console.error("Error al compilar:", error);
+        setEval("No fue posible realizar la evaluacion.")
       });
     }
   }

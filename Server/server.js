@@ -1,10 +1,14 @@
 
 const express = require('express')
 const bdCrud = require('./crud/bd-crud.js')
+const PrologRequests = require('./PrologConn/ProlgRequests.js');
+
 const bodyParser = require('body-parser');
 const cors = require('cors')
 const path = require('path');
 const ScriptRepository = require('../Server/repositories/ScriptsRepository')
+const http = require('http');
+
 
 const app = express()
 
@@ -48,26 +52,28 @@ app.get('/about', (req, res) => {
 
 
 //  POST METHOD RETURN SAME TEXT WITH TIMESTAMP ON THE BEGINNING
+
+/*
+THIS POST IS USED ONLY IN OFS 1.5 OR BELOW
 app.post('/compile', (req, res) =>{
     const timestampedText = `${new Date().toISOString()}: ${req.body.text}`; // Add timestamp to received text
     res.json({result : timestampedText}) // Returns json with timestamp + received text
     return;
 })
+*/
+
 
 //  POST METHOD WE DON'T KNOW WHAT THIS HAVE TO DO 
-app.post('/eval', (req, res) =>{
-    bdCrud.responseEval().then((script) =>{
-        script ? 
-            res.status(200).json(script) : 
-            res.status(404).json({ message: 'No se pudo evaluar la expresion' })
-      })
-      .catch((err) => {
-        res.status(500).json({ message: 'Error interno del servidor' });
-    })
-    return;
+app.post('/eval', ({ body: { text } }, res) =>{
+  try{ 
+    let evalResult = eval(text)
+      console.log(evalResult)
+      res.status(200).json({message: evalResult})
+    }catch(err){
+        res.status(500).json({ message: 'No fue posible realizar la evaluacion.' });
+    }
 })
 // LOAD AND SAVE SCRIPTS
-
 
   app.post('/script/save', (req, res) => {
     bdCrud.save({id, contenido} = req.body)
@@ -132,4 +138,14 @@ app.post('/eval', (req, res) =>{
    return  
   });
 
-
+  app.post('/compile', ({ body: { text } }, res) => {
+    // SEND REQUEST
+    PrologRequests.sendRequestToProlog({text})
+      .then((prologResponse) => {
+        res.json({ result: prologResponse });
+      })
+      .catch((error) => {
+        console.error(error);
+        res.status(500).json({ error: 'Error en la solicitud POST a Prolog' });
+      });
+  });

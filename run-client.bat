@@ -1,2 +1,3 @@
-cd client
-npm install && npm run build && cd build && http-server
+REM Contenido de run-client.bat
+echo Ejecutando el cliente...
+cd client && npm install && npm run build
